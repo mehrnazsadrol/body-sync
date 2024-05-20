@@ -1,0 +1,6 @@
+{
+  "appTitle": "weight_control",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
