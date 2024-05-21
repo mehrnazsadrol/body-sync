@@ -14,11 +14,12 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  fl_chart: ^0.35.0
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^3.0.0
 
 flutter:
@@ -28,5 +29,4 @@ flutter:
   generate: true
 
   assets:
-    # Add assets from the images directory to the application.
     - assets/images/
