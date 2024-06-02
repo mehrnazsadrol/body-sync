@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'customized_linechart.dart';
 import 'theme.dart';
 
 class WeightView extends StatefulWidget {
@@ -38,25 +39,46 @@ class _WeightViewState extends State<WeightView> {
     return Column(
       children: [
         Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: LineChart(
-              LineChartData(
-                gridData: FlGridData(show: true),
-                titlesData: FlTitlesData(show: true),
-                borderData: FlBorderData(show: true),
-                lineBarsData: [
-                  LineChartBarData(
-                    spots: weights.isNotEmpty 
-                      ? weights.asMap().entries.map((e) => FlSpot(e.key.toDouble(), e.value)).toList()
-                      : [FlSpot(0, 0)], // Add a default point if the list is empty
-                    isCurved: true,
-                    colors: [AppTheme.darkGreen2],
-                    barWidth: 4,
-                    belowBarData: BarAreaData(show: false),
+          child: LineChartWithCustomBackground(
+            lineChartData: LineChartData(
+              gridData: FlGridData(show: true),
+              titlesData: FlTitlesData(
+                leftTitles: SideTitles(
+                  showTitles: true,
+                  margin: 0,
+                  reservedSize: 30,
+                  getTextStyles: (value) => const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
                   ),
-                ],
+                ),
+                bottomTitles: SideTitles(
+                  showTitles: true,
+                  margin: 0,
+                  reservedSize: 30,
+                  getTextStyles: (value) => const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 12,
+                  ),
+                ),
               ),
+              borderData: FlBorderData(
+                show: true,
+                border: Border.all(color: Colors.black, width: 1),
+              ),
+              lineBarsData: [
+                LineChartBarData(
+                  spots: weights.isNotEmpty 
+                    ? weights.asMap().entries.map((e) => FlSpot(e.key.toDouble(), e.value)).toList()
+                    : [FlSpot(0, 0)], // Add a default point if the list is empty
+                  isCurved: true,
+                  colors: [AppTheme.darkGreen2],
+                  barWidth: 4,
+                  belowBarData: BarAreaData(show: false),
+                ),
+              ],
             ),
           ),
         ),
