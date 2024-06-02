@@ -11,27 +11,27 @@ class WeightView extends StatefulWidget {
 
 class _WeightViewState extends State<WeightView> {
   List<double> weights = [];
+  List<DateTime> dates = [];
   TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _loadWeights();
-  }
-
-  _loadWeights() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      weights = (prefs.getStringList('weights') ?? []).map((item) => double.parse(item)).toList();
-    });
   }
 
   _saveWeight(double weight) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       weights.add(weight);
-      prefs.setStringList('weights', weights.map((item) => item.toString()).toList());
+      dates.add(DateTime.now());
+      _saveData();
     });
+  }
+
+  _saveData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setStringList('weights', weights.map((item) => item.toString()).toList());
+    prefs.setStringList('dates', dates.map((item) => item.toIso8601String()).toList());
   }
 
   List<FlSpot> _generateSpots() {
@@ -48,7 +48,10 @@ class _WeightViewState extends State<WeightView> {
       children: [
         SizedBox(
           height: screenHeight * 0.6,
-          child: LineChartWithCustomBackground(allSpots: _generateSpots()),
+          child: LineChartWithCustomBackground(
+            allSpots: _generateSpots(),
+            startDate: dates.isNotEmpty ? dates.first : DateTime.now(),
+          ),
         ),
         Padding(
           padding: const EdgeInsets.only(top: 50, bottom: 30),

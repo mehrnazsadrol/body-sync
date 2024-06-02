@@ -1,24 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'theme.dart';
+import 'package:intl/intl.dart';
 
 class LineChartWithCustomBackground extends StatelessWidget {
   final List<Color> _colors = [
-    Color(0xFF14293A), 
-    Color(0xff3B9C8D), 
+    Color(0xFF14293A),
+    Color(0xff3B9C8D),
     Color(0xffD8B06E),
-    Color(0xffF1A292)
+    Color(0xffF1A292),
   ];
 
-    final List<Color> _colors2 = [
-      Color(0xFF2AC4D2),
-      Color(0xff4CE3CE),
-      Color(0xffFCE9BA)
-    ];
+  final List<Color> _colors2 = [
+    Color(0xFF2AC4D2),
+    Color(0xff4CE3CE),
+    Color(0xffFCE9BA),
+  ];
 
   final List<FlSpot> allSpots;
+  final DateTime startDate;
 
-  LineChartWithCustomBackground({required this.allSpots});
+  LineChartWithCustomBackground({
+    required this.allSpots,
+    required this.startDate,
+  });
+
+  String formatMonthDay(double value) {
+    final DateTime date = startDate.add(Duration(days: value.toInt()));
+    final DateFormat formatter = DateFormat('MMM d');
+    return formatter.format(date);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,11 +57,12 @@ class LineChartWithCustomBackground extends StatelessWidget {
                   sideTitles: SideTitles(
                     showTitles: true,
                     reservedSize: 30,
+                    interval: 30, // Adjust the interval for three months view
                     getTitlesWidget: (value, meta) {
                       return Text(
-                        value.toString(),
+                        formatMonthDay(value),
                         style: const TextStyle(
-                          color:  AppTheme.darkGreen3,
+                          color: AppTheme.darkGreen3,
                           fontSize: 10,
                         ),
                       );
@@ -63,7 +75,7 @@ class LineChartWithCustomBackground extends StatelessWidget {
                   spots: allSpots,
                   isCurved: true,
                   barWidth: 0,
-                  aboveBarData:BarAreaData(
+                  aboveBarData: BarAreaData(
                     show: true,
                     gradient: LinearGradient(
                       colors: _colors2,
