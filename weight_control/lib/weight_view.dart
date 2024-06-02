@@ -34,53 +34,21 @@ class _WeightViewState extends State<WeightView> {
     });
   }
 
+  List<FlSpot> _generateSpots() {
+    return List.generate(weights.length, (index) => FlSpot(index.toDouble(), weights[index]));
+  }
+
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+
     return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        Expanded(
-          child: LineChartWithCustomBackground(
-            lineChartData: LineChartData(
-              gridData: FlGridData(show: true),
-              titlesData: FlTitlesData(
-                leftTitles: SideTitles(
-                  showTitles: true,
-                  margin: 0,
-                  reservedSize: 30,
-                  getTextStyles: (value) => const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
-                  ),
-                ),
-                bottomTitles: SideTitles(
-                  showTitles: true,
-                  margin: 0,
-                  reservedSize: 30,
-                  getTextStyles: (value) => const TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
-                  ),
-                ),
-              ),
-              borderData: FlBorderData(
-                show: true,
-                border: Border.all(color: Colors.black, width: 1),
-              ),
-              lineBarsData: [
-                LineChartBarData(
-                  spots: weights.isNotEmpty 
-                    ? weights.asMap().entries.map((e) => FlSpot(e.key.toDouble(), e.value)).toList()
-                    : [FlSpot(0, 0)], // Add a default point if the list is empty
-                  isCurved: true,
-                  colors: [AppTheme.darkGreen2],
-                  barWidth: 4,
-                  belowBarData: BarAreaData(show: false),
-                ),
-              ],
-            ),
-          ),
+        SizedBox(
+          height: screenHeight * 0.6,
+          child: LineChartWithCustomBackground(allSpots: _generateSpots()),
         ),
         Padding(
           padding: const EdgeInsets.only(top: 50, bottom: 30),
@@ -102,7 +70,7 @@ class _WeightViewState extends State<WeightView> {
                 children: [
                   Expanded(
                     child: Container(
-                      height: 50, // Adjust the height to match the design
+                      height: 50,
                       decoration: BoxDecoration(
                         color: AppTheme.backgroundColor,
                         borderRadius: BorderRadius.only(
@@ -115,18 +83,18 @@ class _WeightViewState extends State<WeightView> {
                         controller: _controller,
                         decoration: InputDecoration(
                           labelText: 'Enter weight',
-                          labelStyle: TextStyle(color: AppTheme.darkGreen3),
+                          labelStyle: TextStyle(color: const Color.fromARGB(255, 65, 101, 101)),
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
                         ),
-                        style: TextStyle(color: AppTheme.whiteColor),
+                        style: TextStyle(color: AppTheme.darkGreen3),
                         keyboardType: TextInputType.number,
                         textAlignVertical: TextAlignVertical.center,
                       ),
                     ),
                   ),
                   Container(
-                    width: MediaQuery.of(context).size.width * 0.8 / 3, // Set the width of the button to 1/3 of the container's width
+                    width: MediaQuery.of(context).size.width * 0.8 / 3,
                     height: 50,
                     decoration: BoxDecoration(
                       color: AppTheme.darkGreen2,
