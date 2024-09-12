@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weight_control/cal_intake.dart';
+import 'package:weight_control/cal_intake_view.dart';
 import 'package:weight_control/weight_view.dart';
 import 'package:weight_control/workout_view.dart';
 import 'theme.dart'; // Import the theme file
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Custom Bottom Bar',
       theme: ThemeData(
-        scaffoldBackgroundColor: AppTheme.backgroundColor,
+        scaffoldBackgroundColor: Color(0x91A1A1B),
         elevatedButtonTheme: ElevatedButtonThemeData(style: AppTheme.buttonStyle),
       ),
       home: MyHomePage(),
@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Row(
               children: [
                 _buildNavItem(0, 'Workout', true),
-                _buildNavItem(1, 'Energy Intake', false),
+                _buildNavItem(1, 'Calory Intake', false),
                 _buildNavItem(2, 'Weight', false, true),
               ],
             ),
@@ -108,11 +108,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               if (_selectedIndex == index)
                 Padding(
-                  padding: const EdgeInsets.only(top: 2), // Adjust this value to position the underline slightly lower
+                  padding: const EdgeInsets.only(top: 2),
                   child: Container(
                     width: 60,
                     height: 3,
-                    color: AppTheme.whiteColor.withOpacity(0.8), // Slightly brighter white
+                    color: AppTheme.whiteColor.withOpacity(0.8),
                   ),
                 ),
             ],
