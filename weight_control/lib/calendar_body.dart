@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dotted_border/dotted_border.dart';
 
 class CalendarBody extends StatelessWidget {
   final DateTime currDate;
@@ -11,6 +12,7 @@ class CalendarBody extends StatelessWidget {
     final lastDayOfMonth = DateTime(currDate.year, currDate.month + 1, 0);
     final numberOfDays = lastDayOfMonth.day;
     final startWeekday = (firstDayOfMonth.weekday % 7);
+    final today = DateTime.now();
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -33,6 +35,11 @@ class CalendarBody extends StatelessWidget {
                 child: Text(''),
               );
             } else {
+              final day = index - startWeekday + 1;
+              final isToday = today.year == currDate.year &&
+                              today.month == currDate.month &&
+                              today.day == day;
+
               return GestureDetector(
                 onTap: () {
                   print('Tapped on ${index - startWeekday + 1}');
@@ -40,12 +47,30 @@ class CalendarBody extends StatelessWidget {
                 child: Container(
                   alignment: Alignment.center,
                   height: cellHeight,
-                  child: Text(
-                    '${index - startWeekday + 1}',
-                    style: const TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                    ),
-                  ),
+                  child: isToday
+                      ? DottedBorder(
+                          borderType: BorderType.Circle,
+                          color: Color.fromARGB(255, 255, 255, 255),
+                          strokeWidth: 1,
+                          dashPattern: [5, 5],
+                          child: Container(
+                            width: cellWidth * 0.75,
+                            height: cellHeight * 0.75,
+                            alignment: Alignment.center,
+                            child: Text(
+                              '$day',
+                              style: const TextStyle(
+                                color: Color.fromARGB(255, 255, 255, 255),
+                              ),
+                            ),
+                          ),
+                        )
+                      : Text(
+                          '$day',
+                          style: const TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                          ),
+                        ),
                 ),
               );
             }

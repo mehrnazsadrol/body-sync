@@ -3,9 +3,38 @@ import 'calendar_body.dart';
 import 'calendar_title.dart';
 import 'calendar_header_row.dart';
 
-class CalendarView extends StatelessWidget {
+class CalendarView extends StatefulWidget {
+  @override
+  _CalendarViewState createState() => _CalendarViewState();
+}
 
+
+class _CalendarViewState extends State<CalendarView> {
   DateTime _selectedDate = DateTime.now();
+
+  void _goToPreviousMonth() {
+    setState(() {
+      int year = _selectedDate.year;
+      int month = _selectedDate.month - 1;
+      if (month == 0) {
+        month = 12;
+        year -= 1;
+      }
+      _selectedDate = DateTime(year, month, 1);
+    });
+  }
+
+  void _goToNextMonth() {
+    setState(() {
+      int year = _selectedDate.year;
+      int month = _selectedDate.month + 1;
+      if (month == 13) {
+        month = 1;
+        year += 1;
+      }
+      _selectedDate = DateTime(year, month, 1);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +58,11 @@ class CalendarView extends StatelessWidget {
           ),
           child: Column(
             children: [
-              CalendarTitle(currDate: _selectedDate),
+              CalendarTitle(
+                currDate: _selectedDate,
+                onPreviousMonth: _goToPreviousMonth,
+                onNextMonth: _goToNextMonth,
+              ),
               CalendarHeaderRow(),
               Expanded(child: CalendarBody(currDate: _selectedDate)),
             ],

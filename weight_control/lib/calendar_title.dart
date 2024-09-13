@@ -7,8 +7,14 @@ const List<String> _months = [
 
 class CalendarTitle extends StatelessWidget {
   final DateTime currDate;
+  final VoidCallback onPreviousMonth;
+  final VoidCallback onNextMonth;
 
-  const CalendarTitle({required this.currDate});
+  const CalendarTitle({
+    required this.currDate,
+    required this.onPreviousMonth,
+    required this.onNextMonth,
+  });
 
   String get _month {
     return _months[currDate.month - 1];
@@ -18,16 +24,42 @@ class CalendarTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 10.0, bottom: 10.0, left: 10.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start (left)
         children: [
-          Text(
-            '${currDate.year}-${_month}',
-            style: const TextStyle(
-              fontSize: 22.0,
-              fontWeight: FontWeight.w800,
-              color: Color.fromARGB(255, 255, 255, 255),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              '${currDate.year}',
+              style: const TextStyle(
+                fontSize: 18.0,
+                color: Color.fromARGB(255, 255, 255, 255),
+              ),
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children:[
+              Transform.rotate(
+                angle: 3.14159, // 180 degrees in radians
+                child: IconButton(
+                  icon: Icon(Icons.play_arrow, color: Colors.white),
+                  onPressed: onPreviousMonth,
+                ),
+              ),
+              Text(
+                '${_month}',
+                style: const TextStyle(
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.w800,
+                  color: Color.fromARGB(255, 255, 255, 255),
+                ),
+              ),
+              IconButton(
+                icon: Icon(Icons.play_arrow, color: Colors.white),
+                onPressed: onNextMonth,
+              ),
+            ],
           ),
         ],
       ),
