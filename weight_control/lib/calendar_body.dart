@@ -2,9 +2,82 @@ import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 
 class CalendarBody extends StatelessWidget {
+  final List<DateTime> savedDates;
   final DateTime currDate;
+  final void Function(DateTime) onDateTapped;
 
-  const CalendarBody({required this.currDate});
+  const CalendarBody({
+    required this.savedDates,
+    required this.currDate,
+    required this.onDateTapped,
+  });
+
+    bool _isToday(DateTime date) {
+    final today = DateTime.now();
+    return today.year == date.year && today.month == date.month && today.day == date.day;
+  }
+
+  bool _isSavedDate(DateTime date) {
+    return savedDates.any((savedDate) =>
+        savedDate.year == date.year &&
+        savedDate.month == date.month &&
+        savedDate.day == date.day);
+  }
+
+  Widget _buildDateCell(BuildContext context, DateTime date, double cellWidth, double cellHeight) {
+    final isToday = _isToday(date);
+    final isSavedDate = _isSavedDate(date);
+
+    return GestureDetector(
+      onTap: () => onDateTapped(date),
+      child: Container(
+        alignment: Alignment.center,
+        height: cellHeight,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            if (isSavedDate)
+              Container(
+                width: cellWidth * 0.7,
+                height: cellHeight * 0.7,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: const Color.fromARGB(255, 255, 255, 255),
+                    width: 5,
+                  ),
+                ),
+              ),
+            if (isToday)
+              DottedBorder(
+                borderType: BorderType.Circle,
+                color: Colors.white,
+                strokeWidth: 1,
+                dashPattern: [5, 5],
+                child: Container(
+                  width: cellWidth * 0.75,
+                  height: cellHeight * 0.75,
+                  alignment: Alignment.center,
+                  child: Text(
+                    '${date.day}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            if (!isToday)
+              Text(
+                '${date.day}',
+                style: const TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,43 +109,8 @@ class CalendarBody extends StatelessWidget {
               );
             } else {
               final day = index - startWeekday + 1;
-              final isToday = today.year == currDate.year &&
-                              today.month == currDate.month &&
-                              today.day == day;
-
-              return GestureDetector(
-                onTap: () {
-                  print('Tapped on ${index - startWeekday + 1}');
-                },
-                child: Container(
-                  alignment: Alignment.center,
-                  height: cellHeight,
-                  child: isToday
-                      ? DottedBorder(
-                          borderType: BorderType.Circle,
-                          color: Color.fromARGB(255, 255, 255, 255),
-                          strokeWidth: 1,
-                          dashPattern: [5, 5],
-                          child: Container(
-                            width: cellWidth * 0.75,
-                            height: cellHeight * 0.75,
-                            alignment: Alignment.center,
-                            child: Text(
-                              '$day',
-                              style: const TextStyle(
-                                color: Color.fromARGB(255, 255, 255, 255),
-                              ),
-                            ),
-                          ),
-                        )
-                      : Text(
-                          '$day',
-                          style: const TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
-                          ),
-                        ),
-                ),
-              );
+              final date = DateTime(currDate.year, currDate.month, day);
+              return _buildDateCell(context, date, cellWidth, cellHeight);
             }
           },
         );

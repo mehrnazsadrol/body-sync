@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'calendar_body.dart';
 import 'calendar_title.dart';
 import 'calendar_header_row.dart';
@@ -11,6 +12,41 @@ class CalendarView extends StatefulWidget {
 
 class _CalendarViewState extends State<CalendarView> {
   DateTime _selectedDate = DateTime.now();
+  List<DateTime> _savedDates = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSavedDates();
+  }
+
+  Future<void> _loadSavedDates() async {
+    final prefs = await SharedPreferences.getInstance();
+    final savedDates = prefs.getStringList('savedDates') ?? [];
+    setState(() {
+      _savedDates = savedDates.map((date) => DateTime.parse(date)).toList();
+    });
+  }
+
+  Future<void> _saveDates() async {
+    final prefs = await SharedPreferences.getInstance();
+    final savedDates = _savedDates.map((date) => date.toIso8601String()).toList();
+    await prefs.setStringList('savedDates', savedDates);
+  }
+
+  void _onDateTapped(DateTime date) {
+    if (_savedDates.contains(date)) {
+      setState(() {
+        _savedDates.remove(date);
+        _saveDates();
+      });
+    } else {
+      setState(() {
+        _savedDates.add(date);
+        _saveDates();
+      });
+    }
+  }
 
   void _goToPreviousMonth() {
     setState(() {
@@ -64,7 +100,12 @@ class _CalendarViewState extends State<CalendarView> {
                 onNextMonth: _goToNextMonth,
               ),
               CalendarHeaderRow(),
-              Expanded(child: CalendarBody(currDate: _selectedDate)),
+              Expanded(
+                child: CalendarBody(
+                  savedDates: _savedDates,
+                  onDateTapped: _onDateTapped,
+                  currDate: _selectedDate)
+              ),
             ],
           ),
         ),
