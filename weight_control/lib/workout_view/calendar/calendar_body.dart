@@ -85,7 +85,6 @@ class CalendarBody extends StatelessWidget {
     final lastDayOfMonth = DateTime(currDate.year, currDate.month + 1, 0);
     final numberOfDays = lastDayOfMonth.day;
     final startWeekday = (firstDayOfMonth.weekday % 7);
-    final today = DateTime.now();
 
     return LayoutBuilder(
       builder: (context, constraints) {

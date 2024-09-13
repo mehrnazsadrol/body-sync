@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'calendar_view.dart';
+import 'calendar/calendar_view.dart';
 
 class WorkoutView extends StatelessWidget {
   @override
