@@ -32,4 +32,5 @@ flutter:
   generate: true
 
   assets:
+    - assets/caloriesData.json
     - assets/images/

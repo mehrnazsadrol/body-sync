@@ -48,7 +48,7 @@ class GridPainter extends CustomPainter {
 
         // Draw white vertical lines on the borders
         final borderPaint = Paint()
-          ..color = Colors.white
+          ..color = Color.fromARGB(75, 255, 255, 255)
           ..style = PaintingStyle.stroke
           ..strokeWidth = 1;
 

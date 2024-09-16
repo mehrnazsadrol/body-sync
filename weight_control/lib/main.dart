@@ -71,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Row(
               children: [
                 _buildNavItem(0, 'Workout', true),
-                _buildNavItem(1, 'Calory Intake', false),
+                _buildNavItem(1, 'Calorie Intake', false),
                 _buildNavItem(2, 'Weight', false, true),
               ],
             ),
