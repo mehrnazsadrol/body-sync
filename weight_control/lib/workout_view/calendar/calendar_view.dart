@@ -81,7 +81,7 @@ class _CalendarViewState extends State<CalendarView> {
           height: size.height * 0.5,
           width: size.width * 0.8,
           decoration: BoxDecoration(
-            color: Color.fromRGBO(102, 102, 102, 0.89),
+            color: Color(0xFFffe4e4),
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(

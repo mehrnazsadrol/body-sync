@@ -19,7 +19,7 @@ class InputBar extends StatelessWidget {
           child: Container(
             height: 50,
             decoration: BoxDecoration(
-              color: AppTheme.backgroundColor,
+              color: Colors.white,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(AppTheme.borderRadius),
                 bottomLeft: Radius.circular(AppTheme.borderRadius),

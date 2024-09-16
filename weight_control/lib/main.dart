@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Custom Bottom Bar',
       theme: ThemeData(
-        scaffoldBackgroundColor: Color(0x91A1A1B),
+        scaffoldBackgroundColor: Color(0xFFfff4ee),
         elevatedButtonTheme: ElevatedButtonThemeData(style: AppTheme.buttonStyle),
       ),
       home: MyHomePage(),

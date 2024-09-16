@@ -38,8 +38,8 @@ class LineChartBody extends StatelessWidget {
         width: size.width,
         height: size.height,
         decoration: BoxDecoration(
-          color: Color.fromRGBO(102, 102, 102, 0.587),
-          border: Border.all(color: Color.fromRGBO(102, 102, 102, 0.587)),
+          color: Color(0xFFfff4ee),
+          border: Border.all(color: Color(0xFFfff4ee)),
         ),
       );
     }
@@ -48,8 +48,8 @@ class LineChartBody extends StatelessWidget {
       width: size.width,
       height: size.height,
       decoration: BoxDecoration(
-        color: Color.fromRGBO(102, 102, 102, 0.587),
-        border: Border.all(color: Color.fromRGBO(102, 102, 102, 0.587)),
+        color: Color(0xFFfff4ee),
+        border: Border.all(color: Color(0xFFfff4ee)),
       ),
       child: Stack(
         children: [
@@ -58,7 +58,7 @@ class LineChartBody extends StatelessWidget {
             child: CustomGridBackground(
               width: size.width,
               height: size.height,
-              colors: [Color(0xFF14293A), Color(0xff3B9C8D), Color(0xffD8B06E), Color(0xffF1A292)]
+              colors: [Color(0xff7fd1ae), Color(0xff7fd1ae),Color(0xff7fd1ae), Color(0xffFF9B82), Color(0xFFfd536a)]
             ),
           ),
         ],

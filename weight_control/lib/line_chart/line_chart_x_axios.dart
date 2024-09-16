@@ -37,7 +37,7 @@ class XAxisPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = const Color.fromARGB(255, 255, 255, 255)
+      ..color = const Color(0xFFd5626a)
       ..strokeWidth = 2.0;
     canvas.drawLine(Offset(0, size.height / 2), Offset(size.width, size.height / 2), paint);
 
@@ -61,7 +61,7 @@ class XAxisPainter extends CustomPainter {
         text: TextSpan(
           text: formattedDate,
           style: TextStyle(
-            color: Color.fromARGB(137, 255, 255, 255),
+            color: Color(0xFFd5626a),
             fontSize: 10,
           ),
         ),

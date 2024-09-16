@@ -18,7 +18,7 @@ class CalendarHeaderRow extends StatelessWidget {
               day,
               style: TextStyle(
                 fontSize: 16.0,
-                color: const Color.fromARGB(255, 255, 255, 255),
+                color: Color(0xFFd5626a),
               ),
             ),
           ),

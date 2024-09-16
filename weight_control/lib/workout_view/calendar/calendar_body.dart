@@ -43,7 +43,7 @@ class CalendarBody extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: const Color.fromARGB(255, 255, 255, 255),
+                    color: Color(0xFFff878d),
                     width: 5,
                   ),
                 ),
@@ -51,7 +51,7 @@ class CalendarBody extends StatelessWidget {
             if (isToday)
               DottedBorder(
                 borderType: BorderType.Circle,
-                color: Colors.white,
+                color: Color(0xFFff878d),
                 strokeWidth: 1,
                 dashPattern: [5, 5],
                 child: Container(
@@ -61,7 +61,7 @@ class CalendarBody extends StatelessWidget {
                   child: Text(
                     '${date.day}',
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: Color(0xFF007688),
                     ),
                   ),
                 ),
@@ -70,7 +70,7 @@ class CalendarBody extends StatelessWidget {
               Text(
                 '${date.day}',
                 style: const TextStyle(
-                  color: Colors.white,
+                  color:Color(0xFF007688),
                 ),
               ),
           ],

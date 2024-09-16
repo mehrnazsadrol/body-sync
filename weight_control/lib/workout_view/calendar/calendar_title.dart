@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const List<String> _months = [
   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-  'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec',
+  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
 ];
 
 class CalendarTitle extends StatelessWidget {
@@ -33,7 +33,7 @@ class CalendarTitle extends StatelessWidget {
               '${currDate.year}',
               style: const TextStyle(
                 fontSize: 18.0,
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: Color(0xFFd5626a),
               ),
             ),
           ),
@@ -43,7 +43,10 @@ class CalendarTitle extends StatelessWidget {
               Transform.rotate(
                 angle: 3.14159, // 180 degrees in radians
                 child: IconButton(
-                  icon: Icon(Icons.play_arrow, color: Colors.white),
+                icon: Icon(
+                  Icons.play_arrow,
+                  color: Color(0xFFd5626a),
+                ),
                   onPressed: onPreviousMonth,
                 ),
               ),
@@ -52,11 +55,14 @@ class CalendarTitle extends StatelessWidget {
                 style: const TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.w800,
-                  color: Color.fromARGB(255, 255, 255, 255),
+                  color: Color(0xFFd5626a),
                 ),
               ),
               IconButton(
-                icon: Icon(Icons.play_arrow, color: Colors.white),
+                icon: Icon(
+                  Icons.play_arrow,
+                  color: Color(0xFFd5626a),
+                ),
                 onPressed: onNextMonth,
               ),
             ],
