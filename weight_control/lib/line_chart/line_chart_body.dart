@@ -83,25 +83,6 @@ class _AreaClipper extends CustomClipper<Path> {
   }
 }
 
-
-
-    // return Container(
-    //   key: _containerKey,
-    //   width: MediaQuery.of(context).size.width * 0.85,
-    //   height: 5, // Define a height for the X-axis painter
-    //   decoration: BoxDecoration(
-    //     border: Border.all(color: Color.fromARGB(255, 163, 122, 238)), // Add a border
-    //   ),
-    //   child: CustomPaint(
-    //     painter: LineChartPainter(
-    //       totalDays: totalDays,
-    //       intervalStartDate: intervalStartDate,
-    //       data: widget.data, 
-    //       containerKey: _containerKey
-    //     ),
-    //   )
-    // );
-
 class LineChartPathCreator {
   final int totalDays;
   final Map<DateTime, int> data;
@@ -143,97 +124,5 @@ class LineChartPathCreator {
       return areaPath;
     }
     return null;
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-class LineChartPainter extends CustomPainter {
-  final int totalDays;
-  final Map<DateTime, int> data;
-  final DateTime intervalStartDate;
-  final GlobalKey containerKey;
-  Path? areaPath;
-
-  LineChartPainter({
-    required this.totalDays,
-    required this.intervalStartDate,
-    required this.data,
-    required this.containerKey,
-  });
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    // final paint = Paint()
-    //   ..color = Colors.blue
-    //   ..strokeWidth = 2.0
-    //   ..style = PaintingStyle.stroke;
-
-    // final pointPaint = Paint()
-    //   ..color = Colors.red
-    //   ..strokeWidth = 4.0
-    //   ..style = PaintingStyle.fill;
-
-    final double spacing = size.width / totalDays;
-    final List<Offset> points = [];
-
-
-    final int maxValue = data.values.isNotEmpty ? data.values.reduce((a, b) => a > b ? a : b) : 1;
-    final double maxY = 1.3 * maxValue;
-
-    final RenderBox containerBox = containerKey.currentContext!.findRenderObject() as RenderBox;
-    final Offset containerPosition = containerBox.localToGlobal(Offset.zero);
-    final double containerStartX = containerPosition.dx;
-
-    final filteredData = data.entries.where((entry) => entry.key.isAfter(intervalStartDate)).toList();
-
-    if (filteredData.isNotEmpty) {
-      areaPath = Path();
-      areaPath!.moveTo(containerStartX, size.height);
-
-      for (var entry in filteredData) {
-        final int daysFromStart = entry.key.difference(intervalStartDate).inDays;
-        final double x = containerStartX + daysFromStart * spacing;
-        final double y = size.height - (entry.value / maxY) * size.height;
-        points.add(Offset(x, y));
-        areaPath!.lineTo(x, y);
-      }
-
-      areaPath!.lineTo(points.last.dx, size.height);
-      areaPath!.close();
-    }
-
-
-    // for (int i = 0; i < points.length - 1; i++) {
-    //   canvas.drawLine(points[i], points[i + 1], paint);
-    // }
-
-
-    // for (final point in points) {
-    //   canvas.drawCircle(point, 4.0, pointPaint);
-    // }
-  }
-
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return true;
   }
 }
