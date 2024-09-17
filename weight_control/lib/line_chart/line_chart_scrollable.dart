@@ -23,7 +23,7 @@ class _LineChartStateScrollable extends State<CustomLineChartScrollable> with Ti
       setState(() {
         data = loadedData;
         calculateInterval = CalculateInterval();
-         isLoading = false;
+        isLoading = false;
       });
     });
   }

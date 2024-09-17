@@ -3,24 +3,22 @@ import 'package:flutter/material.dart';
 class CalculateInterval {
   ValueNotifier<double> zoomLevel;
   int daysInMonth;
-  int totalDays = 30;
+  int totalDays;
+  int interval;
 
   CalculateInterval({double initialZoomLevel = 1.0, this.daysInMonth = 30})
-      : zoomLevel = ValueNotifier<double>(initialZoomLevel);
+      : zoomLevel = ValueNotifier<double>(initialZoomLevel),
+        interval = 0,
+        totalDays = 0 {
+    setTotalDays();
+  }
 
   void setZoomLevel(double newZoomLevel) {
     zoomLevel.value = newZoomLevel;
+    setTotalDays();
   }
 
-  double getWidthPerDay(Size size) {
-    return size.width / totalDays;
-  }
-
-  Map<String, dynamic> getInterval() {
-    int interval;
-    DateTime intervalStartDate;
-
-
+  void setTotalDays() {
     if (zoomLevel.value > 0.7) {
       interval = 4;
       totalDays = daysInMonth;
@@ -37,10 +35,18 @@ class CalculateInterval {
       interval = 120;
       totalDays = 730; // 2 years
     }
-    intervalStartDate = DateTime.now().subtract(Duration(days: totalDays));
+  }
+
+  double getWidthPerDay(Size size) {
+    return size.width / totalDays;
+  }
+
+  Map<String, dynamic> getInterval() {
+    DateTime intervalStartDate = DateTime.now().subtract(Duration(days: totalDays));
     return {
       'interval': interval,
       'totalDays': totalDays,
-      'intervalStartDate': intervalStartDate.toString()};
+      'intervalStartDate': intervalStartDate.toString()
+    };
   }
 }

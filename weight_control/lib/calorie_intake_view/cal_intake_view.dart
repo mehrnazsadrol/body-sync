@@ -1,7 +1,6 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import '../common/input_bar.dart';
-import '../line_chart/line_chart.dart';
+import '../line_chart/line_chart_scrollable.dart';
 
 class CalIntakeView extends StatelessWidget {
 
@@ -15,12 +14,13 @@ class CalIntakeView extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container (
+          decoration: BoxDecoration(border: Border.all(color: Color(0xFFfff4ee))),
           width: MediaQuery.of(context).size.width * 0.9,
           height: MediaQuery.of(context).size.height * 0.7,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustomLineChart(),
+              CustomLineChartScrollable(),
               InputBar(
                 onPressed: onInputButtonPressed,
                 action: 'add'),
