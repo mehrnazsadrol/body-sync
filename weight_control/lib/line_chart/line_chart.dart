@@ -48,7 +48,7 @@ class _LineChartState extends State<CustomLineChart> with TickerProviderStateMix
 
 
   void _onScaleUpdate(ScaleUpdateDetails details) {
-    double scaleFactor = 0.05; // Adjust this value to control sensitivity
+    double scaleFactor = 0.01; // Adjust this value to control sensitivity
     double newZoomLevel = _zoomLevel + (details.scale - 1) * scaleFactor;
     newZoomLevel = newZoomLevel.clamp(0.0, 1.0);
 

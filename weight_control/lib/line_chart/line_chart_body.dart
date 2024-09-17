@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'calculate_interval.dart';
 import '../custom_background.dart';
-import 'dart:ui'; // Add this import
+import 'dart:ui';
 
 class LineChartBody extends StatelessWidget {
   final CalculateInterval calculateInterval;
