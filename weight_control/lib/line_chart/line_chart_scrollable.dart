@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:weight_control/line_chart/calculate_interval.dart';
 import 'package:weight_control/line_chart/line_chart_x_axios_scrollable.dart';
-import 'dart:convert';
 import 'line_chart_body_scrollable.dart';
+import 'setup_fake_data.dart';
 
 class CustomLineChartScrollable extends StatefulWidget {
+  final String page;
+
+  CustomLineChartScrollable({required this.page});
+
   @override
   _LineChartStateScrollable createState() => _LineChartStateScrollable();
 }
 
 class _LineChartStateScrollable extends State<CustomLineChartScrollable> with TickerProviderStateMixin {
   late CalculateInterval calculateInterval;
+  late FakeData fakeData;
   double _zoomLevel = 1.0;
   List<MapEntry<DateTime, int>> data = [];
   bool isLoading = true;
@@ -19,13 +23,12 @@ class _LineChartStateScrollable extends State<CustomLineChartScrollable> with Ti
   @override
   void initState() {
     super.initState();
-    loadJsonData().then((loadedData) {
-      setState(() {
-        data = loadedData;
+    setState(() {
+        fakeData = FakeData();
+        data = widget.page == 'calories' ? fakeData.getCalData() : fakeData.getWeightData();
         calculateInterval = CalculateInterval();
         isLoading = false;
       });
-    });
   }
 
   void _onScaleUpdate(ScaleUpdateDetails details) {
@@ -35,22 +38,6 @@ class _LineChartStateScrollable extends State<CustomLineChartScrollable> with Ti
     });
   }
 
-
-  Future<List<MapEntry<DateTime, int>>> loadJsonData() async {
-    final String response = await rootBundle.loadString('assets/caloriesData.json');
-    final data = await json.decode(response);
-    List<MapEntry<DateTime, int>> parsedData = [];
-
-    for (var entry in data['data']) {
-      DateTime date = DateTime.parse(entry['date']);
-      int calorie = entry['calories'];
-      parsedData.add(MapEntry(date, calorie));
-    }
-
-    parsedData.sort((a, b) => a.key.compareTo(b.key));
-
-    return parsedData;
-  }
 
   @override
   Widget build(BuildContext context) {

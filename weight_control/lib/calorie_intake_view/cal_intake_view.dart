@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import '../common/input_bar.dart';
 import '../line_chart/line_chart_scrollable.dart';
@@ -20,7 +22,9 @@ class CalIntakeView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustomLineChartScrollable(),
+              CustomLineChartScrollable(
+                page: 'calories',
+              ),
               InputBar(
                 onPressed: onInputButtonPressed,
                 action: 'add'),

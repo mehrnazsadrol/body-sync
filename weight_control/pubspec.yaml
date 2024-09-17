@@ -33,4 +33,5 @@ flutter:
 
   assets:
     - assets/caloriesData.json
+    - assets/weightData.json
     - assets/images/

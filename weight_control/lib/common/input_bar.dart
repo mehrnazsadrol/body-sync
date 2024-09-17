@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../theme.dart';
+import '../layout/theme.dart';
 
 class InputBar extends StatelessWidget {
   final VoidCallback onPressed;

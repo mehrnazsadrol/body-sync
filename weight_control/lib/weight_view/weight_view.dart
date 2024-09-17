@@ -1,7 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import '../common/input_bar.dart';
-import '../line_chart/line_chart_scrollable.dart';
+import '../../common/input_bar.dart';
+import '../../line_chart/line_chart_scrollable.dart';
 
 class WeightView extends StatelessWidget {
 
@@ -21,7 +21,9 @@ class WeightView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CustomLineChartScrollable(),
+              CustomLineChartScrollable(
+                page: 'weight',
+              ),
               InputBar(
                 onPressed: onInputButtonPressed,
                 action: 'check'),
