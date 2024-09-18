@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:weight_control/calorie_intake_view/cal_intake_view.dart';
 import 'package:weight_control/weight_view/weight_view.dart';
 import 'package:weight_control/workout_view/workout_view.dart';
-import 'layout/theme.dart'; 
+import 'package:weight_control/common/data_handler.dart';
+import 'layout/theme.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        Provider<DataHandler>(create: (_) => DataHandler()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:weight_control/common/data_handler.dart';
 import 'calendar_body.dart';
 import 'calendar_title.dart';
 import 'calendar_header_row.dart';
+import 'package:provider/provider.dart';
 
 class CalendarView extends StatefulWidget {
   @override
@@ -11,41 +13,35 @@ class CalendarView extends StatefulWidget {
 
 
 class _CalendarViewState extends State<CalendarView> {
+  late DataHandler dataHandler;
   DateTime _selectedDate = DateTime.now();
   List<DateTime> _savedDates = [];
 
   @override
   void initState() {
     super.initState();
+    dataHandler = Provider.of<DataHandler>(context, listen: false);
     _loadSavedDates();
   }
 
   Future<void> _loadSavedDates() async {
-    final prefs = await SharedPreferences.getInstance();
-    final savedDates = prefs.getStringList('savedDates') ?? [];
-    setState(() {
-      _savedDates = savedDates.map((date) => DateTime.parse(date)).toList();
+    dataHandler.getSavedDataCalendar().then((savedDates) {
+      setState(() {
+        _savedDates = savedDates;
+      });
     });
   }
 
-  Future<void> _saveDates() async {
-    final prefs = await SharedPreferences.getInstance();
-    final savedDates = _savedDates.map((date) => date.toIso8601String()).toList();
-    await prefs.setStringList('savedDates', savedDates);
-  }
-
   void _onDateTapped(DateTime date) {
-    if (_savedDates.contains(date)) {
-      setState(() {
+    setState(() {
+      if (_savedDates.contains(date)) {
+        dataHandler.saveWorkoutData(date, false);
         _savedDates.remove(date);
-        _saveDates();
-      });
-    } else {
-      setState(() {
+      } else {
+        dataHandler.saveWorkoutData(date, true);
         _savedDates.add(date);
-        _saveDates();
-      });
-    }
+      }
+    });
   }
 
   void _goToPreviousMonth() {

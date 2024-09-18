@@ -3,6 +3,7 @@ import 'package:weight_control/line_chart/calculate_interval.dart';
 import 'package:weight_control/line_chart/line_chart_x_axios_scrollable.dart';
 import 'line_chart_body_scrollable.dart';
 import 'setup_fake_data.dart';
+import '../common/data_handler.dart';
 
 class CustomLineChartScrollable extends StatefulWidget {
   final String page;
@@ -20,16 +21,37 @@ class _LineChartStateScrollable extends State<CustomLineChartScrollable> with Ti
   List<MapEntry<DateTime, int>> data = [];
   bool isLoading = true;
 
+
   @override
   void initState() {
     super.initState();
-    setState(() {
-        fakeData = FakeData();
-        data = widget.page == 'calories' ? fakeData.getCalData() : fakeData.getWeightData();
-        calculateInterval = CalculateInterval();
-        isLoading = false;
-      });
+    calculateInterval = CalculateInterval();
+    _fetchData();
   }
+
+  Future<void> _fetchData() async {
+    // fakeData = FakeData();
+    // data = widget.page == 'calories' ? fakeData.getCalData() : fakeData.getWeightData();
+    DataHandler dataHandler = DataHandler();
+    List<MapEntry<DateTime, int>> fetchedData = [];
+
+    if (widget.page == 'calories') {
+      fetchedData = (await dataHandler.getSavedDataLineChart('calories'));
+    } else if (widget.page == 'weight') {
+      fetchedData = (await dataHandler.getSavedDataLineChart('weight'));
+    }
+
+    if (fetchedData.isNotEmpty) {
+      fetchedData.sort((a, b) => a.key.compareTo(b.key));
+    }
+
+    setState(() {
+      data = fetchedData;
+      isLoading = false;
+    });
+  }
+
+
 
   void _onScaleUpdate(ScaleUpdateDetails details) {
     setState(() {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'calculate_interval.dart';
-import 'dart:developer';
+import 'package:provider/provider.dart';
+import '../common/data_handler.dart';
 
 class LineChartXAxiosScrollable extends StatelessWidget {
   final List<MapEntry<DateTime, int>> data;
@@ -12,14 +13,16 @@ class LineChartXAxiosScrollable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dataHandler = Provider.of<DataHandler>(context);
     final size = Size(
       MediaQuery.of(context).size.width * 0.85,
       MediaQuery.of(context).size.height * 0.5,
     );
     final intervalData = calculateInterval.getInterval();
+    final earliestDate = dataHandler.getEarliestDate(data);
     final int interval = intervalData['interval']!;
     final double widthPerDay = calculateInterval.getWidthPerDay(size);
-    final DateTime earliestDate = data[0].key;
+
     final double totalWidth = widthPerDay * (DateTime.now().difference(earliestDate).inDays + 2);
 
     return Container(
