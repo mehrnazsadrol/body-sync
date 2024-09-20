@@ -1,3 +1,5 @@
+import 'package:weight_control/layout/theme.dart';
+
 import 'calculate_interval.dart';
 import '../layout/custom_background.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,14 @@ class _LineChartBodyScrollableState extends State<LineChartBodyScrollable> {
   Offset? _touchPosition;
   final GlobalKey _widgetKey = GlobalKey();
   double? widgetHeight;
+
+  final _colorSet = [
+    AppTheme.turquoise,
+    AppTheme.turquoise,
+    AppTheme.turquoise,
+    AppTheme.peachyPink,
+    AppTheme.sunsetOrange,
+  ];
 
   @override
   void initState() {
@@ -98,7 +108,6 @@ class _LineChartBodyScrollableState extends State<LineChartBodyScrollable> {
             onPointerDown: (details) {
               if (areaPath.contains(details.localPosition)) {
                 double? y = pathCreator.getYForX(details.localPosition.dx);
-                print('y: $y');
                 setState(() {
                   if (y != null) {
                     _touchPosition = Offset(details.localPosition.dx, y);
@@ -116,13 +125,7 @@ class _LineChartBodyScrollableState extends State<LineChartBodyScrollable> {
               child: CustomGridBackground(
                 width: totalWidth,
                 height: size.height,
-                colors: [
-                  Color(0xff7fd1ae), 
-                  Color(0xff7fd1ae), 
-                  Color(0xff7fd1ae), 
-                  Color(0xffFF9B82), 
-                  Color(0xFFfd536a)
-                ],
+                colors: _colorSet,
               ),
             ),
           ),

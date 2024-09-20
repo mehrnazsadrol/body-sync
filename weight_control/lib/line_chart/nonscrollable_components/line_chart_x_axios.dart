@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weight_control/layout/theme.dart';
 import '../calculate_interval.dart';
 import 'dart:developer';
 
@@ -37,7 +38,7 @@ class XAxisPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = const Color(0xFFd5626a)
+      ..color = AppTheme.cranberryPink
       ..strokeWidth = 2.0;
     canvas.drawLine(Offset(0, size.height / 2), Offset(size.width, size.height / 2), paint);
 
@@ -61,7 +62,7 @@ class XAxisPainter extends CustomPainter {
         text: TextSpan(
           text: formattedDate,
           style: TextStyle(
-            color: Color(0xFFd5626a),
+            color: AppTheme.cranberryPink,
             fontSize: 10,
           ),
         ),

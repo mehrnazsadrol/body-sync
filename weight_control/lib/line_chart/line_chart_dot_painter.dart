@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weight_control/layout/theme.dart';
 
 class LineChartDotPainter extends CustomPainter {
   final List<Offset> points;
@@ -14,12 +15,12 @@ class LineChartDotPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final redPaint = Paint()
-      ..color = Color(0xFFd5626a)
+      ..color = AppTheme.cranberryPink
       ..style = PaintingStyle.fill;
 
     final textStyle = TextStyle(
-      color: Color(0xFFd5626a),
-      fontSize: 12,
+      color: AppTheme.cranberryPink,
+      fontSize: 11,
     );
     // Draw red dots for points
     for (var point in points) {
@@ -43,7 +44,7 @@ class LineChartDotPainter extends CustomPainter {
             minWidth: 0,
             maxWidth: 80,
           );
-          final offset = Offset(point.dx - textPainter.width, point.dy - 20);
+          final offset = Offset(point.dx - textPainter.width/2, point.dy - 15);
           textPainter.paint(canvas, offset);
       }
     }

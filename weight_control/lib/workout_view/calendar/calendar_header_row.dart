@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../layout/theme.dart';
 
 const List<String> _days = [
   'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat',
@@ -18,7 +19,7 @@ class CalendarHeaderRow extends StatelessWidget {
               day,
               style: TextStyle(
                 fontSize: 16.0,
-                color: Color(0xFFd5626a),
+                color: AppTheme.cranberryPink,
               ),
             ),
           ),

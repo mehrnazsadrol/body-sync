@@ -59,25 +59,32 @@ class LineChartPathCreator {
       controlpoint = points[idx];
       endpoint = quadraticBezierPoints[idx];
 
-      double a = startPoint.dx - 2 * controlpoint.dx + endpoint.dx;
+      double a = startPoint.dx - (2 * controlpoint.dx) + endpoint.dx;
       double b = 2 * (controlpoint.dx - startPoint.dx);
       double c = startPoint.dx - x;
 
       double discriminant = b * b - 4 * a * c;
-      if (discriminant < 0) {
-        return -1;
-      } 
+      print('a: $a, b: $b, c: $c, discriminant: $discriminant');
+      double t;
+      if (a == 0) {
+        t = -c / b;
+      } else {
+        if (discriminant < 0) {
+          return -1;
+        }
 
 
-      double sqrtDiscriminant = sqrt(discriminant);
+        double sqrtDiscriminant = sqrt(discriminant);
 
-      // Two possible values of t
-      double t1 = (-b + sqrtDiscriminant) / (2 * a);
-      double t2 = (-b - sqrtDiscriminant) / (2 * a);
+        // Two possible values of t
+        double t1 = (-b + sqrtDiscriminant) / (2 * a);
+        double t2 = (-b - sqrtDiscriminant) / (2 * a);
 
-      // Choose the value of t that's between 0 and 1
-      double t = (t1 >= 0 && t1 <= 1) ? t1 : t2;
+        print('t1: $t1, t2: $t2');
 
+        // Choose the value of t that's between 0 and 1
+        t = (t1 >= 0 && t1 <= 1) ? t1 : t2;
+      }
       if (t < 0 || t > 1) {
         print('no valid t');
         return -1;

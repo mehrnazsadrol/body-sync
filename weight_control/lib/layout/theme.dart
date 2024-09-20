@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   // Colors
-  static const Color yellow = Color(0xFFFDC63A);
-  static const Color lightPink = Color(0xFFFCB5B0);
-  static const Color darkPink1 = Color(0xFFFC8B98);
-  static const Color darkPink2 = Color(0xFFF8655E);
-  static const Color backgroundColor = Color(0xFFFDFCE7);
-  static const Color lightGreen = Color(0xff51C5AC);
+  static const Color yellow = Color.fromRGBO(253, 198, 58, 1);
+  static const Color peachyPink = Color(0xffFF9B82);
+  static const Color sunsetOrange = Color(0xFFfd536a);
+  static const Color cranberryPink = Color(0xFFd5626a);
+  static const Color backgroundColor = Color(0xFFfff4ee);
+  static const Color turquoise = Color(0xff7fd1ae);
   static const Color darkGreen1 = Color(0xFF54A09C); 
   static const Color darkGreen2 = Color(0xFF3A8F92); 
   static const Color darkGreen3 = Color(0xFF4C7677); 

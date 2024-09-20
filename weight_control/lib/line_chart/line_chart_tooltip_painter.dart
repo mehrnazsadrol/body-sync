@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weight_control/layout/theme.dart';
 
 class TooltipPainter extends CustomPainter {
   double height;
@@ -17,13 +18,13 @@ class TooltipPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
 
     Paint linePaint = Paint()
-      ..color = Color(0xFFd5626a)
+      ..color = AppTheme.cranberryPink
       ..strokeWidth = 2.0;
 
     TextPainter textPainter = TextPainter(
       text: TextSpan(
         text: formattedText,
-        style: TextStyle(color:Color.fromARGB(255, 255, 255, 255), fontSize: 14),
+        style: TextStyle(color:Colors.white, fontSize: 14),
       ),
       textDirection: TextDirection.ltr,
     );
@@ -43,7 +44,7 @@ class TooltipPainter extends CustomPainter {
       textPainter.height + 10,
     );
     Paint rectPaint = Paint()
-      ..color = Color(0xFFd5626a)
+      ..color = AppTheme.cranberryPink
       ..style = PaintingStyle.fill;
     canvas.drawRect(rect, rectPaint);
     textPainter.paint(canvas, offset);
@@ -54,7 +55,7 @@ class TooltipPainter extends CustomPainter {
       linePaint,
     );
   }
-  
+
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
