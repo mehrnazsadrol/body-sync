@@ -64,7 +64,6 @@ class LineChartPathCreator {
       double c = startPoint.dx - x;
 
       double discriminant = b * b - 4 * a * c;
-      print('a: $a, b: $b, c: $c, discriminant: $discriminant');
       double t;
       if (a == 0) {
         t = -c / b;
@@ -80,13 +79,10 @@ class LineChartPathCreator {
         double t1 = (-b + sqrtDiscriminant) / (2 * a);
         double t2 = (-b - sqrtDiscriminant) / (2 * a);
 
-        print('t1: $t1, t2: $t2');
-
         // Choose the value of t that's between 0 and 1
         t = (t1 >= 0 && t1 <= 1) ? t1 : t2;
       }
       if (t < 0 || t > 1) {
-        print('no valid t');
         return -1;
       }
 
