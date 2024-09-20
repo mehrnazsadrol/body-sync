@@ -20,8 +20,8 @@ class CalculateInterval {
 
   void setTotalDays() {
     if (zoomLevel.value > 0.7) {
-      interval = 4;
-      totalDays = daysInMonth;
+      interval = 3;
+      totalDays = 20;
     } else if (zoomLevel.value > 0.5 && zoomLevel.value <= 0.7) {
       interval = 30;
       totalDays = 180; // 6 months

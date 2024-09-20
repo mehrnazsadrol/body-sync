@@ -4,7 +4,7 @@ import 'package:weight_control/line_chart/calculate_interval.dart';
 import 'dart:convert';
 import 'line_chart_x_axios.dart';
 import 'line_chart_body.dart';
-import 'calculate_interval.dart';
+import '../calculate_interval.dart';
 
 class CustomLineChart extends StatefulWidget {
   @override

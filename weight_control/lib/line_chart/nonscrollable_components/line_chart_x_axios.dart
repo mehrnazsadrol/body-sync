@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'calculate_interval.dart';
+import '../calculate_interval.dart';
 import 'dart:developer';
 
 class LineChartXAxios extends StatelessWidget {

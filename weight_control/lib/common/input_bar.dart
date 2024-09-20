@@ -81,6 +81,7 @@ class _InputBarState extends State<InputBar> {
             child: ElevatedButton(
               onPressed: () {
                 widget.onPressed(_controller.text);
+                _controller.clear();
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.transparent,

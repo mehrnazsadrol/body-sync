@@ -11,15 +11,16 @@ class WeightView extends StatelessWidget {
   Widget build(BuildContext context) {
     final dataHandler = Provider.of<DataHandler>(context);
 
+    void _unfocus() {
+      _focusNode.unfocus();
+    }
+
     void onInputButtonPressed(String inputText) {
       int? weight = int.tryParse(inputText);
       if (weight != null) {
         dataHandler.addCalories(weight);
       }
-    }
-
-    void _unfocus() {
-      _focusNode.unfocus();
+      _unfocus();
     }
 
     return GestureDetector(
