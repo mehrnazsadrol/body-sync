@@ -12,8 +12,9 @@ import 'line_chart_path_creator.dart';
 class LineChartBodyScrollable extends StatefulWidget {
   final CalculateInterval calculateInterval;
   final List<MapEntry<DateTime, int>> data;
+  final bool showDataPoints;
 
-  LineChartBodyScrollable({required this.calculateInterval, required this.data});
+  LineChartBodyScrollable({required this.calculateInterval, required this.data, required this.showDataPoints});
 
   @override
   _LineChartBodyScrollableState createState() => _LineChartBodyScrollableState();
@@ -129,13 +130,14 @@ class _LineChartBodyScrollableState extends State<LineChartBodyScrollable> {
               ),
             ),
           ),
-          CustomPaint(
-            painter: LineChartDotPainter(
-              points: points,
-              quadraticBezierPoints: quadraticBezierPoints,
-              data: widget.data,
+          if (widget.showDataPoints)
+            CustomPaint(
+              painter: LineChartDotPainter(
+                points: points,
+                quadraticBezierPoints: quadraticBezierPoints,
+                data: widget.data,
+              ),
             ),
-          ),
           if (_touchPosition != null)
             CustomPaint(
               painter: TooltipPainter(

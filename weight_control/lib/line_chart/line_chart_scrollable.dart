@@ -92,7 +92,11 @@ class _LineChartStateScrollable extends State<CustomLineChartScrollable> with Ti
           child: Column (
             children: [
               Expanded(
-                child: LineChartBodyScrollable(calculateInterval: calculateInterval, data: data)
+                child: LineChartBodyScrollable(
+                  calculateInterval: calculateInterval,
+                  data: data,
+                  showDataPoints: widget.page == 'weight' ? false : true
+                )
               ),
               LineChartXAxiosScrollable(calculateInterval: calculateInterval, data: data),
             ],
