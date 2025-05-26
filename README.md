@@ -24,8 +24,8 @@ Before you begin, ensure you have met the following requirements:
 To clone the repository, run the following command in your terminal:
 
 ```bash
-git clone https://github.com/your-username/weight-management.git
-cd weight-management
+git clone https://github.com/mehrnazsadrol/body-sync.git
+cd body-sync
 ```
 
 ### Running the App
