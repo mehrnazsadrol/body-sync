@@ -1,4 +1,4 @@
-# weight-management
+# BodySync
 
 A Flutter application for managing weight.
 
