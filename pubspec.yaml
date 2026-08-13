@@ -1,0 +1,39 @@
+name: body_sync
+description: "BodySync — a Flutter app for tracking weight, calories, and workouts."
+
+# Prevent accidental publishing to pub.dev.
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  provider: ^6.0.0
+  fl_chart: ^0.68.0
+  shared_preferences: ^2.2.3
+  table_calendar: ^3.0.6
+  intl: ^0.19.0
+  dotted_border: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  dashed_line: ^0.1.0
+
+flutter:
+  uses-material-design: true
+
+  # Enable generation of localized Strings from arb files.
+  generate: true
+
+  assets:
+    - assets/caloriesData.json
+    - assets/weightData.json
+    - assets/images/
