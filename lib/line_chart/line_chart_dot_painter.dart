@@ -23,29 +23,26 @@ class LineChartDotPainter extends CustomPainter {
       fontSize: 11,
     );
     // Draw red dots for points
-    for (var point in points) {
+    for (int idx = 0; idx < points.length; idx++) {
+      final point = points[idx];
       if (!quadraticBezierPoints.contains(point)) {
         canvas.drawCircle(point, 3.0, redPaint);
       }
-      int idx = points.indexOf(point);
-      if(idx> 0) {
-        MapEntry<DateTime, int> entry = data[idx-1];
-        int date = entry.key.day;
-        int value = entry.value;
-        final textSpan = TextSpan(
-            text: '${value}',
+      if (idx > 0) {
+        final entry = data[idx - 1];
+        final textPainter = TextPainter(
+          text: TextSpan(
+            text: '${entry.value}',
             style: textStyle,
-          );
-          final textPainter = TextPainter(
-            text: textSpan,
-            textDirection: TextDirection.ltr,
-          );
-          textPainter.layout(
-            minWidth: 0,
-            maxWidth: 80,
-          );
-          final offset = Offset(point.dx - textPainter.width/2, point.dy - 15);
-          textPainter.paint(canvas, offset);
+          ),
+          textDirection: TextDirection.ltr,
+        );
+        textPainter.layout(
+          minWidth: 0,
+          maxWidth: 80,
+        );
+        final offset = Offset(point.dx - textPainter.width / 2, point.dy - 15);
+        textPainter.paint(canvas, offset);
       }
     }
   }

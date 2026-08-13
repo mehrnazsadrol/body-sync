@@ -1,36 +1,37 @@
 import 'package:flutter/material.dart';
 import '../layout/theme.dart';
+
 class InputBar extends StatefulWidget {
   final void Function(String) onPressed;
   final String action;
   final FocusNode focusNode;
 
-  InputBar({
+  const InputBar({
+    super.key,
     required this.onPressed,
     required this.action,
     required this.focusNode,
   });
 
   @override
-  _InputBarState createState() => _InputBarState();
+  State<InputBar> createState() => _InputBarState();
 }
 
 class _InputBarState extends State<InputBar> {
   final TextEditingController _controller = TextEditingController();
-  final FocusNode _focusNode = FocusNode();
 
-  late final String textPlaceholder;
+  late final String _textPlaceholder;
 
   @override
   void initState() {
     super.initState();
-    textPlaceholder = 'Enter ' + (widget.action == 'add' ? 'Calorie Intake' : 'Weight');
+    _textPlaceholder =
+        'Enter ${widget.action == 'add' ? 'Calorie Intake' : 'Weight'}';
   }
 
   @override
   void dispose() {
     _controller.dispose();
-    _focusNode.dispose();
     super.dispose();
   }
 
@@ -55,8 +56,9 @@ class _InputBarState extends State<InputBar> {
               alignment: Alignment.center,
               child: TextField(
                 decoration: InputDecoration(
-                  labelText: textPlaceholder,
-                  labelStyle: TextStyle(color: const Color.fromARGB(255, 65, 101, 101)),
+                  labelText: _textPlaceholder,
+                  labelStyle:
+                      TextStyle(color: const Color.fromARGB(255, 65, 101, 101)),
                   border: InputBorder.none,
                   contentPadding: EdgeInsets.symmetric(horizontal: 16.0),
                 ),

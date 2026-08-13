@@ -1,14 +1,15 @@
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 
-class FakeData{
+class FakeData {
   List<MapEntry<DateTime, int>> calData = [];
   List<MapEntry<DateTime, int>> weightData = [];
 
-
   Future<void> loadJsonData() async {
-    final String responseCalData = await rootBundle.loadString('assets/caloriesData.json');
-    final String responseWeightData = await rootBundle.loadString('assets/weightData.json');
+    final String responseCalData =
+        await rootBundle.loadString('assets/caloriesData.json');
+    final String responseWeightData =
+        await rootBundle.loadString('assets/weightData.json');
 
     final calJsonData = await json.decode(responseCalData);
     final weightJsonData = await json.decode(responseWeightData);
@@ -27,7 +28,6 @@ class FakeData{
 
     calData.sort((a, b) => a.key.compareTo(b.key));
     weightData.sort((a, b) => a.key.compareTo(b.key));
-
   }
 
   List<MapEntry<DateTime, int>> getCalData() {

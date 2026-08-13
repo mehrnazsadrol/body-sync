@@ -4,13 +4,15 @@ import 'calculate_interval.dart';
 import 'package:provider/provider.dart';
 import '../common/data_handler.dart';
 
-class LineChartXAxiosScrollable extends StatelessWidget {
+class LineChartXAxisScrollable extends StatelessWidget {
   final List<MapEntry<DateTime, int>> data;
   final CalculateInterval calculateInterval;
 
-    LineChartXAxiosScrollable({
-      required this.calculateInterval,
-      required this.data});
+  const LineChartXAxisScrollable({
+    super.key,
+    required this.calculateInterval,
+    required this.data,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,18 +26,21 @@ class LineChartXAxiosScrollable extends StatelessWidget {
     final int interval = intervalData['interval']!;
     final double widthPerDay = calculateInterval.getWidthPerDay(size);
 
-    final double totalWidth = widthPerDay * (DateTime.now().difference(earliestDate).inDays + 2);
+    final double totalWidth =
+        widthPerDay * (DateTime.now().difference(earliestDate).inDays + 2);
 
-    return Container(
+    return SizedBox(
       width: totalWidth,
       height: 40,
       child: CustomPaint(
-        painter: XAxisPainter(interval: interval, widthPerDay: widthPerDay, earliestDate: earliestDate),
+        painter: XAxisPainter(
+            interval: interval,
+            widthPerDay: widthPerDay,
+            earliestDate: earliestDate),
       ),
     );
   }
 }
-
 
 class XAxisPainter extends CustomPainter {
   final int interval;
@@ -43,23 +48,29 @@ class XAxisPainter extends CustomPainter {
   final DateTime earliestDate;
   final int totalDays;
 
-  XAxisPainter({ required this.interval, required this.widthPerDay, required this.earliestDate}) : totalDays = DateTime.now().difference(earliestDate).inDays;
+  XAxisPainter(
+      {required this.interval,
+      required this.widthPerDay,
+      required this.earliestDate})
+      : totalDays = DateTime.now().difference(earliestDate).inDays;
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
       ..color = AppTheme.cranberryPink
       ..strokeWidth = 2.0;
-    canvas.drawLine(Offset(0, size.height / 2), Offset(size.width, size.height / 2), paint);
+    canvas.drawLine(
+        Offset(0, size.height / 2), Offset(size.width, size.height / 2), paint);
 
-    for (int i = totalDays%interval; i <= totalDays; i += interval) {
+    for (int i = totalDays % interval; i <= totalDays; i += interval) {
       final double x = i * widthPerDay;
-      canvas.drawLine(Offset(x, size.height / 2), Offset(x, size.height / 2 + 5), paint);
+      canvas.drawLine(
+          Offset(x, size.height / 2), Offset(x, size.height / 2 + 5), paint);
 
       final DateTime currDate = earliestDate.add(Duration(days: i));
-      final String formattedDate = currDate.year < DateTime.now().year ? 
-        '${currDate.year - 2000}${_monthAbbreviation(currDate.month)}${currDate.day}' : '${_monthAbbreviation(currDate.month)}${currDate.day}';
-
+      final String formattedDate = currDate.year < DateTime.now().year
+          ? '${currDate.year - 2000}${_monthAbbreviation(currDate.month)}${currDate.day}'
+          : '${_monthAbbreviation(currDate.month)}${currDate.day}';
 
       final textPainter = TextPainter(
         text: TextSpan(
@@ -72,14 +83,25 @@ class XAxisPainter extends CustomPainter {
         textDirection: TextDirection.ltr,
       );
       textPainter.layout();
-      textPainter.paint(canvas, Offset(x - textPainter.width / 2, size.height / 2 + 8));
+      textPainter.paint(
+          canvas, Offset(x - textPainter.width / 2, size.height / 2 + 8));
     }
   }
 
   String _monthAbbreviation(int month) {
     const List<String> months = [
-      'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-      'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
     ];
     return months[month - 1];
   }

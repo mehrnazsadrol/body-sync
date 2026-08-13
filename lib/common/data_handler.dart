@@ -1,31 +1,28 @@
-import 'dart:async';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class DataHandler{
+class DataHandler {
+  static const String _storageKey = 'savedData';
+
   bool? workout;
   int? calories;
   int? weight;
 
-
-  void addCalories(int calories) async{
+  Future<void> addCalories(int calories) async {
     await _loadDataForToday();
     this.calories = (this.calories ?? 0) + calories;
-    _saveData();
+    await _saveData();
   }
 
-  void addWeight(int weight) async{
+  Future<void> addWeight(int weight) async {
     await _loadDataForToday();
     this.weight = (this.weight ?? 0) + weight;
-    _saveData();
+    await _saveData();
   }
 
   Future<void> _loadDataForToday() async {
-    final prefs = await SharedPreferences.getInstance();
-    final today = DateTime.now().toIso8601String().split('T').first;
-    final savedData = prefs.getString('savedData') ?? '{}';
-    final Map<String, dynamic> jsonData = json.decode(savedData);
-    print('inside _loadDataForToday, jsonData: $jsonData');
+    final jsonData = await _readAll();
+    final today = _dateKey(DateTime.now());
 
     if (jsonData.containsKey(today)) {
       final todayData = jsonData[today];
@@ -36,26 +33,21 @@ class DataHandler{
   }
 
   Future<void> _saveData() async {
-    final prefs = await SharedPreferences.getInstance();
-    final today = DateTime.now().toIso8601String().split('T').first;
+    final jsonData = await _readAll();
+    final today = _dateKey(DateTime.now());
     final Map<String, dynamic> data = {};
 
     data['workout'] = workout ?? false;
     if (calories != null) data['calories'] = calories;
     if (weight != null) data['weight'] = weight;
 
-    final savedData = prefs.getString('savedData') ?? '{}';
-    final Map<String, dynamic> jsonData = json.decode(savedData);
     jsonData[today] = data;
-    print('inside _saveData, jsonData: $jsonData');
-    await prefs.setString('savedData', json.encode(jsonData));
+    await _writeAll(jsonData);
   }
 
-  Future<void> saveWorkoutData (DateTime date, bool workout) async {
-    final prefs = await SharedPreferences.getInstance();
-    final savedData = prefs.getString('savedData') ?? '{}';
-    final Map<String, dynamic> jsonData = json.decode(savedData);
-    final dateKey = date.toIso8601String().split('T').first;
+  Future<void> saveWorkoutData(DateTime date, bool workout) async {
+    final jsonData = await _readAll();
+    final dateKey = _dateKey(date);
 
     if (jsonData.containsKey(dateKey)) {
       jsonData[dateKey]['workout'] = workout;
@@ -63,74 +55,62 @@ class DataHandler{
       jsonData[dateKey] = {'workout': workout};
     }
 
-    await prefs.setString('savedData', json.encode(jsonData));
+    await _writeAll(jsonData);
   }
 
-  /*
-  * to clear the data from the shared preferences add the below lines
-  * final prefs = await SharedPreferences.getInstance();
-  * await prefs.remove('savedData');
-  * List<MapEntry<DateTime, int>> data = []; 
-  * 
-  * to fake calories data add the below lines
-  * if (dataType == 'calories') {
-  *      return [
-  *      MapEntry(DateTime(2024, 09,01), 1500),
-  *      MapEntry(DateTime(2024, 09,04), 1800),
-  *      MapEntry(DateTime(2024, 09,10), 1400),
-  *      MapEntry(DateTime(2024, 09,17), 1550)
-  *    ];
-  *  }
-  *
-  * 
-  */
+  Future<List<MapEntry<DateTime, int>>> getSavedDataLineChart(
+      String dataType) async {
+    final jsonData = await _readAll();
 
-  Future<List<MapEntry<DateTime, int>>> getSavedDataLineChart(String dataType) async {
-
-    final prefs = await SharedPreferences.getInstance();
-    final savedData = prefs.getString('savedData') ?? '{}';
-    final Map<String, dynamic> jsonData = json.decode(savedData);
-
-
-    List<MapEntry<DateTime, int>> data = [];
+    final List<MapEntry<DateTime, int>> data = [];
     jsonData.forEach((key, value) {
       final date = DateTime.parse(key);
       switch (dataType) {
         case 'weight':
-          if (value['weight'] != null) data.add(MapEntry(date, value['weight'] as int));
+          if (value['weight'] != null) {
+            data.add(MapEntry(date, value['weight'] as int));
+          }
           break;
         case 'calories':
-          if (value['calories'] != null) data.add(MapEntry(date, value['calories'] as int));
+          if (value['calories'] != null) {
+            data.add(MapEntry(date, value['calories'] as int));
+          }
           break;
       }
     });
-
-    print(data);
 
     return data;
   }
 
   DateTime getEarliestDate(List<MapEntry<DateTime, int>> data) {
-    DateTime earliestDate;
     if (data.isEmpty || data.length < 30) {
-      earliestDate = DateTime.now().subtract(const Duration(days: 30));
-    } else {
-      earliestDate = data[0].key;
+      return DateTime.now().subtract(const Duration(days: 30));
     }
-    return earliestDate;
+    return data[0].key;
   }
 
   Future<List<DateTime>> getSavedDataCalendar() async {
-    final prefs = await SharedPreferences.getInstance();
-    final savedData = prefs.getString('savedData') ?? '{}';
-    final Map<String, dynamic> jsonData = json.decode(savedData);
+    final jsonData = await _readAll();
 
-    List<DateTime> data = [];
+    final List<DateTime> data = [];
     jsonData.forEach((key, value) {
       final date = DateTime.parse(key);
       if (value['workout'] as bool == true) data.add(date);
     });
 
     return data;
+  }
+
+  String _dateKey(DateTime date) => date.toIso8601String().split('T').first;
+
+  Future<Map<String, dynamic>> _readAll() async {
+    final prefs = await SharedPreferences.getInstance();
+    final savedData = prefs.getString(_storageKey) ?? '{}';
+    return json.decode(savedData) as Map<String, dynamic>;
+  }
+
+  Future<void> _writeAll(Map<String, dynamic> jsonData) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_storageKey, json.encode(jsonData));
   }
 }

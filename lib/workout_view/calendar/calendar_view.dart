@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:body_sync/common/data_handler.dart';
 import 'calendar_body.dart';
 import 'calendar_title.dart';
@@ -7,10 +6,11 @@ import 'calendar_header_row.dart';
 import 'package:provider/provider.dart';
 
 class CalendarView extends StatefulWidget {
-  @override
-  _CalendarViewState createState() => _CalendarViewState();
-}
+  const CalendarView({super.key});
 
+  @override
+  State<CalendarView> createState() => _CalendarViewState();
+}
 
 class _CalendarViewState extends State<CalendarView> {
   late DataHandler dataHandler;
@@ -81,7 +81,8 @@ class _CalendarViewState extends State<CalendarView> {
             borderRadius: BorderRadius.circular(20),
             boxShadow: [
               BoxShadow(
-                color: const Color.fromARGB(255, 255, 255, 255).withOpacity(0.2),
+                color: const Color.fromARGB(255, 255, 255, 255)
+                    .withValues(alpha: 0.2),
                 spreadRadius: 5,
                 blurRadius: 7,
                 offset: Offset(0, 3),
@@ -97,11 +98,10 @@ class _CalendarViewState extends State<CalendarView> {
               ),
               CalendarHeaderRow(),
               Expanded(
-                child: CalendarBody(
-                  savedDates: _savedDates,
-                  onDateTapped: _onDateTapped,
-                  currDate: _selectedDate)
-              ),
+                  child: CalendarBody(
+                      savedDates: _savedDates,
+                      onDateTapped: _onDateTapped,
+                      currDate: _selectedDate)),
             ],
           ),
         ),

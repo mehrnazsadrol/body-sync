@@ -14,10 +14,15 @@ class LineChartBodyScrollable extends StatefulWidget {
   final List<MapEntry<DateTime, int>> data;
   final bool showDataPoints;
 
-  LineChartBodyScrollable({required this.calculateInterval, required this.data, required this.showDataPoints});
+  const LineChartBodyScrollable(
+      {super.key,
+      required this.calculateInterval,
+      required this.data,
+      required this.showDataPoints});
 
   @override
-  _LineChartBodyScrollableState createState() => _LineChartBodyScrollableState();
+  State<LineChartBodyScrollable> createState() =>
+      _LineChartBodyScrollableState();
 }
 
 class _LineChartBodyScrollableState extends State<LineChartBodyScrollable> {
@@ -37,7 +42,6 @@ class _LineChartBodyScrollableState extends State<LineChartBodyScrollable> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       widgetHeight = getWidgetHeight();
-      print('widgetHeight: $widgetHeight');
     });
     super.initState();
   }
@@ -45,7 +49,6 @@ class _LineChartBodyScrollableState extends State<LineChartBodyScrollable> {
   @override
   Widget build(BuildContext context) {
     if (widget.data.isEmpty) {
-      print('No data available');
       return Container(
         width: MediaQuery.of(context).size.width * 0.85,
         height: MediaQuery.of(context).size.height * 0.5,
@@ -70,7 +73,8 @@ class _LineChartBodyScrollableState extends State<LineChartBodyScrollable> {
 
     final double widthPerDay = widget.calculateInterval.getWidthPerDay(size);
     final DateTime earliestDate = dataHandler.getEarliestDate(widget.data);
-    final double totalWidth = widthPerDay * (DateTime.now().difference(earliestDate).inDays + 2);
+    final double totalWidth =
+        widthPerDay * (DateTime.now().difference(earliestDate).inDays + 2);
 
     final pathCreator = LineChartPathCreator(
       size: Size(totalWidth, size.height),
@@ -82,8 +86,8 @@ class _LineChartBodyScrollableState extends State<LineChartBodyScrollable> {
     final Path? areaPath = pathCreator.createPath();
 
     final List<Offset> points = pathCreator.getPoints();
-    final List<Offset> quadraticBezierPoints = pathCreator.getQuadraticBezierPoints();
-
+    final List<Offset> quadraticBezierPoints =
+        pathCreator.getQuadraticBezierPoints();
 
     if (areaPath == null) {
       return Container(
@@ -103,7 +107,7 @@ class _LineChartBodyScrollableState extends State<LineChartBodyScrollable> {
       decoration: BoxDecoration(
         border: Border.all(color: Color(0xFFfff4ee)),
       ),
-      child: Stack ( 
+      child: Stack(
         children: [
           Listener(
             onPointerDown: (details) {
@@ -122,7 +126,8 @@ class _LineChartBodyScrollableState extends State<LineChartBodyScrollable> {
               });
             },
             child: ClipPath(
-              clipper: _AreaClipper(areaPath), // Use the path to clip the contents
+              clipper:
+                  _AreaClipper(areaPath), // Use the path to clip the contents
               child: CustomGridBackground(
                 width: totalWidth,
                 height: size.height,
@@ -141,10 +146,9 @@ class _LineChartBodyScrollableState extends State<LineChartBodyScrollable> {
           if (_touchPosition != null)
             CustomPaint(
               painter: TooltipPainter(
-                height: widgetHeight!,
-                touchPosition: _touchPosition!,
-                value: pathCreator.getValueForY(_touchPosition!.dy)
-              ),
+                  height: widgetHeight!,
+                  touchPosition: _touchPosition!,
+                  value: pathCreator.getValueForY(_touchPosition!.dy)),
             ),
         ],
       ),
@@ -152,12 +156,11 @@ class _LineChartBodyScrollableState extends State<LineChartBodyScrollable> {
   }
 
   double getWidgetHeight() {
-    final RenderBox renderBox = _widgetKey.currentContext?.findRenderObject() as RenderBox;
+    final RenderBox renderBox =
+        _widgetKey.currentContext?.findRenderObject() as RenderBox;
     return renderBox.size.height;
   }
 }
-
-
 
 class _AreaClipper extends CustomClipper<Path> {
   final Path path;
@@ -174,4 +177,3 @@ class _AreaClipper extends CustomClipper<Path> {
     return true;
   }
 }
-

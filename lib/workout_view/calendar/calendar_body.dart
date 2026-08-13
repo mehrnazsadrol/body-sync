@@ -7,14 +7,17 @@ class CalendarBody extends StatelessWidget {
   final void Function(DateTime) onDateTapped;
 
   const CalendarBody({
+    super.key,
     required this.savedDates,
     required this.currDate,
     required this.onDateTapped,
   });
 
-    bool _isToday(DateTime date) {
+  bool _isToday(DateTime date) {
     final today = DateTime.now();
-    return today.year == date.year && today.month == date.month && today.day == date.day;
+    return today.year == date.year &&
+        today.month == date.month &&
+        today.day == date.day;
   }
 
   bool _isSavedDate(DateTime date) {
@@ -24,7 +27,8 @@ class CalendarBody extends StatelessWidget {
         savedDate.day == date.day);
   }
 
-  Widget _buildDateCell(BuildContext context, DateTime date, double cellWidth, double cellHeight) {
+  Widget _buildDateCell(BuildContext context, DateTime date, double cellWidth,
+      double cellHeight) {
     final isToday = _isToday(date);
     final isSavedDate = _isSavedDate(date);
 
@@ -70,7 +74,7 @@ class CalendarBody extends StatelessWidget {
               Text(
                 '${date.day}',
                 style: const TextStyle(
-                  color:Color(0xFF007688),
+                  color: Color(0xFF007688),
                 ),
               ),
           ],

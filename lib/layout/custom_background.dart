@@ -7,12 +7,12 @@ class CustomGridBackground extends StatelessWidget {
   final List<Color> colors;
 
   const CustomGridBackground({
-    Key? key,
+    super.key,
     required this.width,
     required this.height,
     required this.colors,
     this.gridSize = 20, // Default size of each grid square
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,8 @@ class GridPainter extends CustomPainter {
           ..strokeWidth = 1;
 
         canvas.drawLine(Offset(x, y), Offset(x, y + gridSize), borderPaint);
-        canvas.drawLine(Offset(x + gridSize, y), Offset(x + gridSize, y + gridSize), borderPaint);
+        canvas.drawLine(Offset(x + gridSize, y),
+            Offset(x + gridSize, y + gridSize), borderPaint);
 
         // Draw horizontal lines with shadow effect
         final shadowPaint = Paint()
@@ -63,7 +64,8 @@ class GridPainter extends CustomPainter {
           ..maskFilter = MaskFilter.blur(BlurStyle.normal, 2); // Shadow effect
 
         canvas.drawLine(Offset(x, y), Offset(x + gridSize, y), shadowPaint);
-        canvas.drawLine(Offset(x, y + gridSize), Offset(x + gridSize, y + gridSize), shadowPaint);
+        canvas.drawLine(Offset(x, y + gridSize),
+            Offset(x + gridSize, y + gridSize), shadowPaint);
       }
     }
   }
@@ -75,7 +77,8 @@ class GridPainter extends CustomPainter {
     if (sectionIndex >= colors.length - 1) {
       return colors.last;
     } else {
-      return Color.lerp(colors[sectionIndex], colors[sectionIndex + 1], sectionFactor)!;
+      return Color.lerp(
+          colors[sectionIndex], colors[sectionIndex + 1], sectionFactor)!;
     }
   }
 

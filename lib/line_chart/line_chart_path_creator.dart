@@ -9,7 +9,7 @@ class LineChartPathCreator {
   final List<Offset> points = [];
   final List<Offset> quadraticBezierPoints = [];
   final double maxY;
-   
+
   List<Offset> getQuadraticBezierPoints() {
     return quadraticBezierPoints;
   }
@@ -23,7 +23,12 @@ class LineChartPathCreator {
     required this.data,
     required this.widthPerDay,
     required this.earliestDate,
-  }) : maxY = data.isNotEmpty ? (data.map((entry) => entry.value).reduce((a, b) => a > b ? a : b) * 1.2) : 1 * 1.2;
+  }) : maxY = data.isNotEmpty
+            ? (data
+                    .map((entry) => entry.value)
+                    .reduce((a, b) => a > b ? a : b) *
+                1.2)
+            : 1 * 1.2;
 
   double? getYForX(double x) {
     int idx = 0;
@@ -33,7 +38,7 @@ class LineChartPathCreator {
 
     Offset currpoint = quadraticBezierPoints[idx];
     double currX = currpoint.dx;
-    while(idx < quadraticBezierPoints.length-1 && x > currX) {
+    while (idx < quadraticBezierPoints.length - 1 && x > currX) {
       idx++;
       currX = quadraticBezierPoints[idx].dx;
     }
@@ -41,10 +46,11 @@ class LineChartPathCreator {
     if (x == quadraticBezierPoints[idx].dx) {
       return quadraticBezierPoints[idx].dy;
     }
-    if (idx == quadraticBezierPoints.length-1) {
+    if (idx == quadraticBezierPoints.length - 1) {
       Offset nextPoint = points[idx];
       Offset currpoint = quadraticBezierPoints[idx];
-      double slope = (nextPoint.dy - currpoint.dy) / (nextPoint.dx - currpoint.dx);
+      double slope =
+          (nextPoint.dy - currpoint.dy) / (nextPoint.dx - currpoint.dx);
       double y = slope * (x - currpoint.dx) + currpoint.dy;
       return y;
     }
@@ -72,7 +78,6 @@ class LineChartPathCreator {
           return -1;
         }
 
-
         double sqrtDiscriminant = sqrt(discriminant);
 
         // Two possible values of t
@@ -95,7 +100,6 @@ class LineChartPathCreator {
     }
   }
 
-
   int getValueForY(double y) {
     if (y < 0) {
       return y.toInt();
@@ -110,21 +114,19 @@ class LineChartPathCreator {
 
     for (int i = 0; i < data.length; i++) {
       final entry = data[i];
-      final int daysFromStart = entry.key.difference(earliestDate).inDays+1;
+      final int daysFromStart = entry.key.difference(earliestDate).inDays + 1;
       final double x = daysFromStart * widthPerDay;
-      final double y = size.height  - (entry.value / maxY) * size.height;
+      final double y = size.height - (entry.value / maxY) * size.height;
       points.add(Offset(x, y));
     }
-    Offset? previousPoint;
     Offset? currentPoint;
     Offset? nextPoint;
-    for (int i = 0; i < points.length; i++) { 
+    for (int i = 0; i < points.length; i++) {
       final point = points[i];
       if (i == 0) {
         areaPath.moveTo(point.dx, point.dy);
         quadraticBezierPoints.add(point);
       } else if (i < points.length - 1) {
-        previousPoint = points[i - 1];
         currentPoint = points[i];
         nextPoint = points[i + 1];
 
@@ -137,8 +139,10 @@ class LineChartPathCreator {
         quadraticBezierPoints.add(endPoint);
 
         areaPath.quadraticBezierTo(
-          controlPoint.dx, controlPoint.dy,
-          endPoint.dx, endPoint.dy,
+          controlPoint.dx,
+          controlPoint.dy,
+          endPoint.dx,
+          endPoint.dy,
         );
       } else {
         areaPath.lineTo(point.dx, point.dy);
@@ -150,5 +154,4 @@ class LineChartPathCreator {
 
     return areaPath;
   }
-
 }

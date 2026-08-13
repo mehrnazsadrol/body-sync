@@ -2,40 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:body_sync/layout/theme.dart';
 
 class TooltipPainter extends CustomPainter {
-  double height;
+  final double height;
   final Offset touchPosition;
   final int value;
-  final formattedText;
+  final String formattedText;
 
   TooltipPainter({
     required this.height,
     required this.touchPosition,
-    required this.value}) : formattedText = value<0 ? 'No data' : value.toStringAsFixed(0);
-
-
+    required this.value,
+  }) : formattedText = value < 0 ? 'No data' : value.toString();
 
   @override
   void paint(Canvas canvas, Size size) {
-
-    Paint linePaint = Paint()
+    final linePaint = Paint()
       ..color = AppTheme.cranberryPink
       ..strokeWidth = 2.0;
 
-    TextPainter textPainter = TextPainter(
+    final textPainter = TextPainter(
       text: TextSpan(
         text: formattedText,
-        style: TextStyle(color:Colors.white, fontSize: 14),
+        style: const TextStyle(color: Colors.white, fontSize: 14),
       ),
       textDirection: TextDirection.ltr,
     );
 
-    textPainter.layout();
     textPainter.layout(
-            minWidth: 0,
-            maxWidth: 80,
+      minWidth: 0,
+      maxWidth: 80,
     );
-    final offset = Offset(touchPosition.dx - textPainter.width -5  , touchPosition.dy - 30);
-
+    final offset =
+        Offset(touchPosition.dx - textPainter.width - 5, touchPosition.dy - 30);
 
     final rect = Rect.fromLTWH(
       offset.dx - 5,
@@ -50,7 +47,7 @@ class TooltipPainter extends CustomPainter {
     textPainter.paint(canvas, offset);
 
     canvas.drawLine(
-      Offset(touchPosition.dx, height+12),
+      Offset(touchPosition.dx, height + 12),
       Offset(touchPosition.dx, touchPosition.dy),
       linePaint,
     );
@@ -61,4 +58,3 @@ class TooltipPainter extends CustomPainter {
     return true;
   }
 }
-

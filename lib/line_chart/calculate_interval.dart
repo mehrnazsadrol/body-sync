@@ -42,7 +42,8 @@ class CalculateInterval {
   }
 
   Map<String, dynamic> getInterval() {
-    DateTime intervalStartDate = DateTime.now().subtract(Duration(days: totalDays));
+    DateTime intervalStartDate =
+        DateTime.now().subtract(Duration(days: totalDays));
     return {
       'interval': interval,
       'totalDays': totalDays,

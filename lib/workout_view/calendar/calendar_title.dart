@@ -2,8 +2,18 @@ import 'package:flutter/material.dart';
 import '../../layout/theme.dart';
 
 const List<String> _months = [
-  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-  'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec',
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
 ];
 
 class CalendarTitle extends StatelessWidget {
@@ -12,6 +22,7 @@ class CalendarTitle extends StatelessWidget {
   final VoidCallback onNextMonth;
 
   const CalendarTitle({
+    super.key,
     required this.currDate,
     required this.onPreviousMonth,
     required this.onNextMonth,
@@ -26,7 +37,8 @@ class CalendarTitle extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 10.0, bottom: 10.0, left: 10.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start, // Align children to the start (left)
+        crossAxisAlignment:
+            CrossAxisAlignment.start, // Align children to the start (left)
         children: [
           Align(
             alignment: Alignment.centerLeft,
@@ -40,19 +52,19 @@ class CalendarTitle extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children:[
+            children: [
               Transform.rotate(
                 angle: 3.14159, // 180 degrees in radians
                 child: IconButton(
-                icon: Icon(
-                  Icons.play_arrow,
-                  color: AppTheme.cranberryPink,
-                ),
+                  icon: Icon(
+                    Icons.play_arrow,
+                    color: AppTheme.cranberryPink,
+                  ),
                   onPressed: onPreviousMonth,
                 ),
               ),
               Text(
-                '${_month}',
+                _month,
                 style: const TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.w800,

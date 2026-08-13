@@ -18,13 +18,16 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Custom Bottom Bar',
       theme: ThemeData(
         scaffoldBackgroundColor: AppTheme.backgroundColor,
-        elevatedButtonTheme: ElevatedButtonThemeData(style: AppTheme.buttonStyle),
+        elevatedButtonTheme:
+            ElevatedButtonThemeData(style: AppTheme.buttonStyle),
       ),
       home: MyHomePage(),
     );
@@ -32,17 +35,18 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
-
   static final List<Widget> _widgetOptions = <Widget>[
-    WorkoutView(),
-    CalIntakeView(),
+    const WorkoutView(),
+    const CalIntakeView(),
     WeightView(),
   ];
 
@@ -56,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: _widgetOptions.elementAt(_selectedIndex),
+        child: _widgetOptions[_selectedIndex],
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(
@@ -69,13 +73,14 @@ class _MyHomePageState extends State<MyHomePage> {
             decoration: BoxDecoration(
               color: AppTheme.darkGreen1,
               boxShadow: [
-                  BoxShadow(
-                    color: AppTheme.darkGreen3.withOpacity(0.5),
-                    offset: Offset(0, 2),
-                    blurRadius: 6,
-                  ),
-                ],
-              borderRadius: BorderRadius.all(Radius.circular(AppTheme.borderRadius)),
+                BoxShadow(
+                  color: AppTheme.darkGreen3.withValues(alpha: 0.5),
+                  offset: Offset(0, 2),
+                  blurRadius: 6,
+                ),
+              ],
+              borderRadius:
+                  BorderRadius.all(Radius.circular(AppTheme.borderRadius)),
             ),
             child: Row(
               children: [
@@ -90,17 +95,24 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget _buildNavItem(int index, String label, [bool isFirst = false, bool isLast = false]) {
+  Widget _buildNavItem(int index, String label,
+      [bool isFirst = false, bool isLast = false]) {
     return Expanded(
       child: GestureDetector(
         onTap: () => _onItemTapped(index),
         child: Container(
           decoration: BoxDecoration(
-            color: _selectedIndex == index ? AppTheme.darkGreen2 : Colors.transparent,
+            color: _selectedIndex == index
+                ? AppTheme.darkGreen2
+                : Colors.transparent,
             borderRadius: _selectedIndex == index
                 ? BorderRadius.horizontal(
-                    left: isFirst ? Radius.circular(AppTheme.borderRadius) : Radius.zero,
-                    right: isLast ? Radius.circular(AppTheme.borderRadius) : Radius.zero,
+                    left: isFirst
+                        ? Radius.circular(AppTheme.borderRadius)
+                        : Radius.zero,
+                    right: isLast
+                        ? Radius.circular(AppTheme.borderRadius)
+                        : Radius.zero,
                   )
                 : null,
           ),
@@ -121,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Container(
                     width: 60,
                     height: 3,
-                    color: AppTheme.whiteColor.withOpacity(0.8),
+                    color: AppTheme.whiteColor.withValues(alpha: 0.8),
                   ),
                 ),
             ],
