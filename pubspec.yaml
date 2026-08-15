@@ -16,9 +16,18 @@ dependencies:
     sdk: flutter
   provider: ^6.0.0
   shared_preferences: ^2.2.3
-  dotted_border: ^2.0.0
+  flutter_local_notifications: ^19.0.0
+  timezone: ^0.10.0
   # Required as a direct dependency by `flutter gen-l10n` (generate: true below).
   intl: ^0.20.3
+  firebase_core: ^4.13.0
+  firebase_auth: ^6.5.7
+  cloud_firestore: ^6.8.0
+  # Data screen: export as a real file, import from one, open OS settings
+  # when notifications are blocked.
+  share_plus: ^10.1.0
+  file_selector: ^1.0.3
+  app_settings: ^5.1.1
 
 dev_dependencies:
   flutter_test:
@@ -32,6 +41,19 @@ flutter:
   generate: true
 
   assets:
-    - assets/caloriesData.json
-    - assets/weightData.json
+    - assets/foods.json
     - assets/images/
+
+  fonts:
+    - family: Assistant
+      fonts:
+        - asset: assets/fonts/Assistant-300.ttf
+          weight: 300
+        - asset: assets/fonts/Assistant-400.ttf
+          weight: 400
+        - asset: assets/fonts/Assistant-500.ttf
+          weight: 500
+        - asset: assets/fonts/Assistant-600.ttf
+          weight: 600
+        - asset: assets/fonts/Assistant-700.ttf
+          weight: 700

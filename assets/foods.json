@@ -1,0 +1,2121 @@
+{
+  "foods": [
+    {
+      "id": "egg",
+      "name": "Egg",
+      "portions": [
+        { "label": "Large", "per": "per egg", "kcal": 72, "p": 6.3, "c": 0.4, "f": 4.8 },
+        { "label": "Medium", "per": "per egg", "kcal": 63, "p": 5.5, "c": 0.3, "f": 4.4 },
+        { "label": "Small", "per": "per egg", "kcal": 54, "p": 4.8, "c": 0.3, "f": 3.7 }
+      ]
+    },
+    {
+      "id": "egg-white",
+      "name": "Egg white",
+      "portions": [
+        { "label": "1 egg", "per": "per egg", "kcal": 17, "p": 3.6, "c": 0.2, "f": 0.1 }
+      ]
+    },
+    {
+      "id": "scrambled-eggs",
+      "name": "Scrambled eggs",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 148, "p": 10, "c": 1.6, "f": 11 }
+      ]
+    },
+    {
+      "id": "egg-fried-rice",
+      "name": "Egg fried rice",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 163, "p": 5, "c": 22, "f": 6 },
+        { "label": "1 bowl (300 g)", "per": "per bowl", "kcal": 489, "p": 15, "c": 66, "f": 18 }
+      ]
+    },
+    {
+      "id": "eggplant",
+      "name": "Eggplant, raw",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 25, "p": 1, "c": 5.9, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "banana",
+      "name": "Banana",
+      "portions": [
+        { "label": "Medium", "per": "per banana", "kcal": 89, "p": 1, "c": 23, "f": 0.3 },
+        { "label": "Large", "per": "per banana", "kcal": 121, "p": 1.5, "c": 31, "f": 0.4 },
+        { "label": "Small", "per": "per banana", "kcal": 72, "p": 0.9, "c": 19, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "apple",
+      "name": "Apple",
+      "portions": [
+        { "label": "Medium", "per": "per apple", "kcal": 95, "p": 0.5, "c": 25, "f": 0.3 },
+        { "label": "Large", "per": "per apple", "kcal": 116, "p": 0.6, "c": 31, "f": 0.4 },
+        { "label": "Small", "per": "per apple", "kcal": 78, "p": 0.4, "c": 21, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "orange",
+      "name": "Orange",
+      "portions": [
+        { "label": "Medium", "per": "per orange", "kcal": 62, "p": 1.2, "c": 15, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "strawberries",
+      "name": "Strawberries",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 32, "p": 0.7, "c": 7.7, "f": 0.3 },
+        { "label": "1 cup (150 g)", "per": "per cup", "kcal": 48, "p": 1, "c": 11.5, "f": 0.5 }
+      ]
+    },
+    {
+      "id": "blueberries",
+      "name": "Blueberries",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 57, "p": 0.7, "c": 14.5, "f": 0.3 }
+      ]
+    },
+    {
+      "id": "grapes",
+      "name": "Grapes",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 69, "p": 0.7, "c": 18, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "avocado",
+      "name": "Avocado",
+      "portions": [
+        { "label": "Half", "per": "per half", "kcal": 160, "p": 2, "c": 8.5, "f": 14.7 },
+        { "label": "Whole", "per": "per avocado", "kcal": 320, "p": 4, "c": 17, "f": 29.4 }
+      ]
+    },
+    {
+      "id": "greek-yogurt",
+      "name": "Greek yogurt",
+      "portions": [
+        { "label": "170 g", "per": "per 170 g", "kcal": 145, "p": 17, "c": 9, "f": 4 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 85, "p": 10, "c": 5.3, "f": 2.4 }
+      ]
+    },
+    {
+      "id": "yogurt-plain",
+      "name": "Yogurt, plain",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 61, "p": 3.5, "c": 4.7, "f": 3.3 }
+      ]
+    },
+    {
+      "id": "milk-whole",
+      "name": "Milk, whole",
+      "portions": [
+        { "label": "250 ml", "per": "per glass", "kcal": 152, "p": 8, "c": 12, "f": 8 },
+        { "label": "100 ml", "per": "per 100 ml", "kcal": 61, "p": 3.2, "c": 4.8, "f": 3.3 }
+      ]
+    },
+    {
+      "id": "milk-skim",
+      "name": "Milk, skim",
+      "portions": [
+        { "label": "250 ml", "per": "per glass", "kcal": 85, "p": 8.4, "c": 12, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "oat-milk",
+      "name": "Oat milk",
+      "portions": [
+        { "label": "250 ml", "per": "per glass", "kcal": 113, "p": 2.5, "c": 16.5, "f": 3.8 }
+      ]
+    },
+    {
+      "id": "oat-latte",
+      "name": "Oat latte",
+      "portions": [
+        { "label": "350 ml", "per": "per 350 ml", "kcal": 190, "p": 7, "c": 24, "f": 7 },
+        { "label": "250 ml", "per": "per 250 ml", "kcal": 136, "p": 5, "c": 17, "f": 5 }
+      ]
+    },
+    {
+      "id": "latte",
+      "name": "Latte, whole milk",
+      "portions": [
+        { "label": "350 ml", "per": "per 350 ml", "kcal": 180, "p": 9.5, "c": 14.5, "f": 9.5 }
+      ]
+    },
+    {
+      "id": "cappuccino",
+      "name": "Cappuccino",
+      "portions": [
+        { "label": "250 ml", "per": "per cup", "kcal": 92, "p": 5, "c": 7.5, "f": 4.8 }
+      ]
+    },
+    {
+      "id": "coffee-black",
+      "name": "Coffee, black",
+      "portions": [
+        { "label": "250 ml", "per": "per cup", "kcal": 2, "p": 0.3, "c": 0, "f": 0 }
+      ]
+    },
+    {
+      "id": "orange-juice",
+      "name": "Orange juice",
+      "portions": [
+        { "label": "250 ml", "per": "per glass", "kcal": 112, "p": 1.7, "c": 26, "f": 0.5 }
+      ]
+    },
+    {
+      "id": "cheddar",
+      "name": "Cheddar cheese",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 121, "p": 7, "c": 0.4, "f": 10 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 403, "p": 23, "c": 1.3, "f": 33 }
+      ]
+    },
+    {
+      "id": "mozzarella",
+      "name": "Mozzarella",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 85, "p": 6.6, "c": 0.7, "f": 6.3 }
+      ]
+    },
+    {
+      "id": "cottage-cheese",
+      "name": "Cottage cheese",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 98, "p": 11, "c": 3.4, "f": 4.3 }
+      ]
+    },
+    {
+      "id": "butter",
+      "name": "Butter",
+      "portions": [
+        { "label": "1 tbsp (14 g)", "per": "per tbsp", "kcal": 102, "p": 0.1, "c": 0, "f": 11.5 }
+      ]
+    },
+    {
+      "id": "olive-oil",
+      "name": "Olive oil",
+      "portions": [
+        { "label": "1 tbsp (14 g)", "per": "per tbsp", "kcal": 119, "p": 0, "c": 0, "f": 13.5 }
+      ]
+    },
+    {
+      "id": "peanut-butter",
+      "name": "Peanut butter",
+      "portions": [
+        { "label": "1 tbsp (16 g)", "per": "per tbsp", "kcal": 94, "p": 4, "c": 3.5, "f": 8 }
+      ]
+    },
+    {
+      "id": "sourdough-toast",
+      "name": "Sourdough toast",
+      "portions": [
+        { "label": "Slice", "per": "per slice", "kcal": 110, "p": 4, "c": 21, "f": 1 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 289, "p": 10.5, "c": 55, "f": 2.6 }
+      ]
+    },
+    {
+      "id": "whole-wheat-bread",
+      "name": "Whole wheat bread",
+      "portions": [
+        { "label": "Slice", "per": "per slice", "kcal": 81, "p": 4, "c": 14, "f": 1.1 }
+      ]
+    },
+    {
+      "id": "white-bread",
+      "name": "White bread",
+      "portions": [
+        { "label": "Slice", "per": "per slice", "kcal": 75, "p": 2.6, "c": 14, "f": 1 }
+      ]
+    },
+    {
+      "id": "bagel",
+      "name": "Bagel, plain",
+      "portions": [
+        { "label": "Whole", "per": "per bagel", "kcal": 277, "p": 11, "c": 55, "f": 1.4 }
+      ]
+    },
+    {
+      "id": "croissant",
+      "name": "Croissant",
+      "portions": [
+        { "label": "Medium", "per": "per croissant", "kcal": 231, "p": 4.7, "c": 26, "f": 12 }
+      ]
+    },
+    {
+      "id": "oatmeal",
+      "name": "Oatmeal, cooked",
+      "portions": [
+        { "label": "1 bowl (240 g)", "per": "per bowl", "kcal": 166, "p": 5.9, "c": 28, "f": 3.6 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 69, "p": 2.5, "c": 12, "f": 1.5 }
+      ]
+    },
+    {
+      "id": "granola",
+      "name": "Granola",
+      "portions": [
+        { "label": "50 g", "per": "per 50 g", "kcal": 224, "p": 5, "c": 30, "f": 9.5 }
+      ]
+    },
+    {
+      "id": "rice-white",
+      "name": "Rice, white, cooked",
+      "portions": [
+        { "label": "1 bowl (200 g)", "per": "per bowl", "kcal": 260, "p": 5.4, "c": 56, "f": 0.6 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 130, "p": 2.7, "c": 28, "f": 0.3 }
+      ]
+    },
+    {
+      "id": "rice-brown",
+      "name": "Rice, brown, cooked",
+      "portions": [
+        { "label": "1 bowl (200 g)", "per": "per bowl", "kcal": 224, "p": 5.2, "c": 46, "f": 1.8 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 112, "p": 2.6, "c": 23, "f": 0.9 }
+      ]
+    },
+    {
+      "id": "pasta",
+      "name": "Pasta, cooked",
+      "portions": [
+        { "label": "1 plate (250 g)", "per": "per plate", "kcal": 394, "p": 14.5, "c": 77, "f": 2.3 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 158, "p": 5.8, "c": 31, "f": 0.9 }
+      ]
+    },
+    {
+      "id": "quinoa",
+      "name": "Quinoa, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 120, "p": 4.4, "c": 21, "f": 1.9 }
+      ]
+    },
+    {
+      "id": "potato",
+      "name": "Potato, boiled",
+      "portions": [
+        { "label": "Medium", "per": "per potato", "kcal": 144, "p": 3, "c": 33, "f": 0.2 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 87, "p": 1.9, "c": 20, "f": 0.1 }
+      ]
+    },
+    {
+      "id": "sweet-potato",
+      "name": "Sweet potato, baked",
+      "portions": [
+        { "label": "Medium", "per": "per potato", "kcal": 103, "p": 2.3, "c": 24, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "fries",
+      "name": "French fries",
+      "portions": [
+        { "label": "Medium serving (117 g)", "per": "per serving", "kcal": 365, "p": 4, "c": 48, "f": 17 }
+      ]
+    },
+    {
+      "id": "chicken-breast",
+      "name": "Chicken breast, grilled",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 165, "p": 31, "c": 0, "f": 3.6 },
+        { "label": "1 fillet (170 g)", "per": "per fillet", "kcal": 281, "p": 53, "c": 0, "f": 6.1 }
+      ]
+    },
+    {
+      "id": "chicken-rice-bowl",
+      "name": "Chicken & rice bowl",
+      "portions": [
+        { "label": "1 bowl", "per": "per bowl", "kcal": 620, "p": 46, "c": 72, "f": 14 }
+      ]
+    },
+    {
+      "id": "chicken-thigh",
+      "name": "Chicken thigh, roasted",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 209, "p": 26, "c": 0, "f": 10.9 }
+      ]
+    },
+    {
+      "id": "beef-mince",
+      "name": "Beef mince, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 250, "p": 26, "c": 0, "f": 15 }
+      ]
+    },
+    {
+      "id": "steak",
+      "name": "Steak, sirloin",
+      "portions": [
+        { "label": "200 g", "per": "per steak", "kcal": 366, "p": 52, "c": 0, "f": 16 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 183, "p": 26, "c": 0, "f": 8 }
+      ]
+    },
+    {
+      "id": "pork-chop",
+      "name": "Pork chop, grilled",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 231, "p": 25.7, "c": 0, "f": 13.5 }
+      ]
+    },
+    {
+      "id": "bacon",
+      "name": "Bacon",
+      "portions": [
+        { "label": "Slice", "per": "per slice", "kcal": 43, "p": 3, "c": 0.1, "f": 3.3 }
+      ]
+    },
+    {
+      "id": "salmon",
+      "name": "Salmon, baked",
+      "portions": [
+        { "label": "1 fillet (150 g)", "per": "per fillet", "kcal": 312, "p": 34, "c": 0, "f": 18.5 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 208, "p": 22.5, "c": 0, "f": 12.4 }
+      ]
+    },
+    {
+      "id": "tuna-canned",
+      "name": "Tuna, canned in water",
+      "portions": [
+        { "label": "1 can (120 g)", "per": "per can", "kcal": 128, "p": 28, "c": 0, "f": 1 }
+      ]
+    },
+    {
+      "id": "shrimp",
+      "name": "Shrimp, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 99, "p": 24, "c": 0.2, "f": 0.3 }
+      ]
+    },
+    {
+      "id": "tofu",
+      "name": "Tofu, firm",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 76, "p": 8, "c": 1.9, "f": 4.8 }
+      ]
+    },
+    {
+      "id": "lentils",
+      "name": "Lentils, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 116, "p": 9, "c": 20, "f": 0.4 }
+      ]
+    },
+    {
+      "id": "chickpeas",
+      "name": "Chickpeas, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 164, "p": 8.9, "c": 27, "f": 2.6 }
+      ]
+    },
+    {
+      "id": "black-beans",
+      "name": "Black beans, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 132, "p": 8.9, "c": 24, "f": 0.5 }
+      ]
+    },
+    {
+      "id": "hummus",
+      "name": "Hummus",
+      "portions": [
+        { "label": "2 tbsp (30 g)", "per": "per 30 g", "kcal": 70, "p": 2, "c": 4, "f": 5 }
+      ]
+    },
+    {
+      "id": "broccoli",
+      "name": "Broccoli, steamed",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 35, "p": 2.4, "c": 7.2, "f": 0.4 }
+      ]
+    },
+    {
+      "id": "spinach",
+      "name": "Spinach, raw",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 23, "p": 2.9, "c": 3.6, "f": 0.4 }
+      ]
+    },
+    {
+      "id": "carrot",
+      "name": "Carrot",
+      "portions": [
+        { "label": "Medium", "per": "per carrot", "kcal": 25, "p": 0.6, "c": 6, "f": 0.1 }
+      ]
+    },
+    {
+      "id": "cucumber",
+      "name": "Cucumber",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 15, "p": 0.7, "c": 3.6, "f": 0.1 }
+      ]
+    },
+    {
+      "id": "tomato",
+      "name": "Tomato",
+      "portions": [
+        { "label": "Medium", "per": "per tomato", "kcal": 22, "p": 1.1, "c": 4.8, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "mixed-salad",
+      "name": "Mixed salad, undressed",
+      "portions": [
+        { "label": "1 bowl (150 g)", "per": "per bowl", "kcal": 33, "p": 2, "c": 6, "f": 0.4 }
+      ]
+    },
+    {
+      "id": "caesar-salad",
+      "name": "Caesar salad with chicken",
+      "portions": [
+        { "label": "1 bowl (300 g)", "per": "per bowl", "kcal": 481, "p": 37, "c": 14, "f": 31 }
+      ]
+    },
+    {
+      "id": "almonds",
+      "name": "Almonds",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 174, "p": 6.4, "c": 6.1, "f": 15 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 579, "p": 21, "c": 22, "f": 50 }
+      ]
+    },
+    {
+      "id": "walnuts",
+      "name": "Walnuts",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 196, "p": 4.6, "c": 4.1, "f": 19.6 }
+      ]
+    },
+    {
+      "id": "cashews",
+      "name": "Cashews",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 166, "p": 5.5, "c": 9.1, "f": 13.1 }
+      ]
+    },
+    {
+      "id": "protein-shake",
+      "name": "Protein shake",
+      "portions": [
+        { "label": "1 scoop", "per": "per scoop", "kcal": 121, "p": 24, "c": 3, "f": 1.5 }
+      ]
+    },
+    {
+      "id": "protein-bar",
+      "name": "Protein bar",
+      "portions": [
+        { "label": "1 bar (60 g)", "per": "per bar", "kcal": 220, "p": 20, "c": 23, "f": 7 }
+      ]
+    },
+    {
+      "id": "dark-chocolate",
+      "name": "Dark chocolate",
+      "portions": [
+        { "label": "2 squares (20 g)", "per": "per 20 g", "kcal": 120, "p": 1.6, "c": 9.2, "f": 8.6 }
+      ]
+    },
+    {
+      "id": "milk-chocolate",
+      "name": "Milk chocolate",
+      "portions": [
+        { "label": "1 bar (45 g)", "per": "per bar", "kcal": 240, "p": 3.4, "c": 26, "f": 13.3 }
+      ]
+    },
+    {
+      "id": "ice-cream-vanilla",
+      "name": "Ice cream, vanilla",
+      "portions": [
+        { "label": "1 scoop (60 g)", "per": "per scoop", "kcal": 124, "p": 2, "c": 14, "f": 6.5 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 207, "p": 3.5, "c": 24, "f": 11 }
+      ]
+    },
+    {
+      "id": "cookie",
+      "name": "Chocolate chip cookie",
+      "portions": [
+        { "label": "1 cookie (30 g)", "per": "per cookie", "kcal": 148, "p": 1.5, "c": 20, "f": 7 }
+      ]
+    },
+    {
+      "id": "potato-chips",
+      "name": "Potato chips",
+      "portions": [
+        { "label": "Small bag (30 g)", "per": "per 30 g", "kcal": 160, "p": 2, "c": 15, "f": 10 }
+      ]
+    },
+    {
+      "id": "popcorn",
+      "name": "Popcorn, air-popped",
+      "portions": [
+        { "label": "1 cup (8 g)", "per": "per cup", "kcal": 31, "p": 1, "c": 6.2, "f": 0.4 }
+      ]
+    },
+    {
+      "id": "pizza-margherita",
+      "name": "Pizza margherita",
+      "portions": [
+        { "label": "Slice", "per": "per slice", "kcal": 220, "p": 9, "c": 27, "f": 8.5 },
+        { "label": "Whole (30 cm)", "per": "per pizza", "kcal": 1760, "p": 72, "c": 216, "f": 68 }
+      ]
+    },
+    {
+      "id": "burger",
+      "name": "Cheeseburger",
+      "portions": [
+        { "label": "1 burger", "per": "per burger", "kcal": 535, "p": 30, "c": 40, "f": 28 }
+      ]
+    },
+    {
+      "id": "burrito",
+      "name": "Chicken burrito",
+      "portions": [
+        { "label": "1 burrito", "per": "per burrito", "kcal": 610, "p": 35, "c": 68, "f": 21 }
+      ]
+    },
+    {
+      "id": "sushi-roll",
+      "name": "Sushi roll, salmon",
+      "portions": [
+        { "label": "6 pieces", "per": "per roll", "kcal": 304, "p": 12, "c": 46, "f": 8 }
+      ]
+    },
+    {
+      "id": "ramen",
+      "name": "Ramen with pork",
+      "portions": [
+        { "label": "1 bowl", "per": "per bowl", "kcal": 650, "p": 28, "c": 78, "f": 24 }
+      ]
+    },
+    {
+      "id": "pad-thai",
+      "name": "Pad thai with chicken",
+      "portions": [
+        { "label": "1 plate", "per": "per plate", "kcal": 690, "p": 30, "c": 84, "f": 26 }
+      ]
+    },
+    {
+      "id": "sandwich-turkey",
+      "name": "Turkey sandwich",
+      "portions": [
+        { "label": "1 sandwich", "per": "per sandwich", "kcal": 330, "p": 22, "c": 40, "f": 9 }
+      ]
+    },
+    {
+      "id": "wrap-veggie",
+      "name": "Veggie wrap",
+      "portions": [
+        { "label": "1 wrap", "per": "per wrap", "kcal": 340, "p": 10, "c": 50, "f": 11 }
+      ]
+    },
+    {
+      "id": "soup-tomato",
+      "name": "Tomato soup",
+      "portions": [
+        { "label": "1 bowl (300 ml)", "per": "per bowl", "kcal": 110, "p": 2.4, "c": 20, "f": 2.4 }
+      ]
+    },
+    {
+      "id": "soup-chicken",
+      "name": "Chicken noodle soup",
+      "portions": [
+        { "label": "1 bowl (300 ml)", "per": "per bowl", "kcal": 185, "p": 13, "c": 22, "f": 5 }
+      ]
+    },
+    {
+      "id": "smoothie-berry",
+      "name": "Berry smoothie",
+      "portions": [
+        { "label": "350 ml", "per": "per 350 ml", "kcal": 210, "p": 4, "c": 46, "f": 2 }
+      ]
+    },
+    {
+      "id": "beer",
+      "name": "Beer, lager",
+      "portions": [
+        { "label": "330 ml", "per": "per bottle", "kcal": 142, "p": 1.5, "c": 11, "f": 0 },
+        { "label": "500 ml", "per": "per pint", "kcal": 215, "p": 2.3, "c": 17, "f": 0 }
+      ]
+    },
+    {
+      "id": "wine-red",
+      "name": "Wine, red",
+      "portions": [
+        { "label": "150 ml", "per": "per glass", "kcal": 125, "p": 0.1, "c": 3.8, "f": 0 }
+      ]
+    },
+    {
+      "id": "soda-cola",
+      "name": "Cola",
+      "portions": [
+        { "label": "330 ml", "per": "per can", "kcal": 139, "p": 0, "c": 35, "f": 0 }
+      ]
+    },
+    {
+      "id": "honey",
+      "name": "Honey",
+      "portions": [
+        { "label": "1 tbsp (21 g)", "per": "per tbsp", "kcal": 64, "p": 0.1, "c": 17, "f": 0 }
+      ]
+    },
+    {
+      "id": "sugar",
+      "name": "Sugar",
+      "portions": [
+        { "label": "1 tsp (4 g)", "per": "per tsp", "kcal": 16, "p": 0, "c": 4, "f": 0 }
+      ]
+    },
+    {
+      "id": "costco-salad",
+      "name": "Costco salad, whole bag (Taylor Farms)",
+      "portions": [
+        { "label": "Whole bag", "per": "per bag", "kcal": 470, "p": 12, "c": 33, "f": 32 }
+      ]
+    },
+    {
+      "id": "taylor-sweet-kale",
+      "name": "Taylor Farms Sweet Kale salad",
+      "portions": [
+        { "label": "Whole bag", "per": "per bag", "kcal": 700, "p": 14, "c": 49, "f": 49 },
+        { "label": "1 serving (100 g)", "per": "per serving", "kcal": 200, "p": 4, "c": 14, "f": 14 }
+      ]
+    },
+    {
+      "id": "taylor-southwest",
+      "name": "Taylor Farms Southwest chopped salad",
+      "portions": [
+        { "label": "Whole bag", "per": "per bag", "kcal": 525, "p": 10.5, "c": 42, "f": 35 },
+        { "label": "1 serving (100 g)", "per": "per serving", "kcal": 150, "p": 3, "c": 12, "f": 10 }
+      ]
+    },
+    {
+      "id": "taylor-caesar",
+      "name": "Taylor Farms Caesar chopped salad",
+      "portions": [
+        { "label": "Whole bag", "per": "per bag", "kcal": 665, "p": 17.5, "c": 31.5, "f": 56 },
+        { "label": "1 serving (100 g)", "per": "per serving", "kcal": 190, "p": 5, "c": 9, "f": 16 }
+      ]
+    },
+    {
+      "id": "taylor-mediterranean",
+      "name": "Taylor Farms Mediterranean Crunch salad",
+      "portions": [
+        { "label": "Whole bag", "per": "per bag", "kcal": 490, "p": 10.5, "c": 35, "f": 35 },
+        { "label": "1 serving (100 g)", "per": "per serving", "kcal": 140, "p": 3, "c": 10, "f": 10 }
+      ]
+    },
+    {
+      "id": "taylor-dill-pickle",
+      "name": "Taylor Farms Dill Pickle chopped salad",
+      "portions": [
+        { "label": "Whole bag", "per": "per bag", "kcal": 490, "p": 14, "c": 28, "f": 35 },
+        { "label": "1 serving (100 g)", "per": "per serving", "kcal": 140, "p": 4, "c": 8, "f": 10 }
+      ]
+    },
+    {
+      "id": "taylor-asian",
+      "name": "Taylor Farms Asian chopped salad",
+      "portions": [
+        { "label": "Whole bag", "per": "per bag", "kcal": 560, "p": 10.5, "c": 52.5, "f": 35 },
+        { "label": "1 serving (100 g)", "per": "per serving", "kcal": 160, "p": 3, "c": 15, "f": 10 }
+      ]
+    },
+    {
+      "id": "taylor-avocado-ranch",
+      "name": "Taylor Farms Avocado Ranch chopped salad",
+      "portions": [
+        { "label": "Whole bag", "per": "per bag", "kcal": 455, "p": 10.5, "c": 31.5, "f": 35 },
+        { "label": "1 serving (100 g)", "per": "per serving", "kcal": 130, "p": 3, "c": 9, "f": 10 }
+      ]
+    },
+    {
+      "id": "taylor-maple-bourbon",
+      "name": "Taylor Farms Maple Bourbon Bacon salad",
+      "portions": [
+        { "label": "Whole bag", "per": "per bag", "kcal": 525, "p": 14, "c": 42, "f": 35 },
+        { "label": "1 serving (100 g)", "per": "per serving", "kcal": 150, "p": 4, "c": 12, "f": 10 }
+      ]
+    },
+    {
+      "id": "ballpark-meal",
+      "name": "Restaurant meal, ballpark",
+      "portions": [
+        { "label": "Small", "per": "\u2248500 kcal", "kcal": 500, "p": 20, "c": 55, "f": 20 },
+        { "label": "Medium", "per": "\u2248800 kcal", "kcal": 800, "p": 32, "c": 88, "f": 33 },
+        { "label": "Large", "per": "\u22481200 kcal", "kcal": 1200, "p": 45, "c": 130, "f": 52 }
+      ]
+    },
+    {
+      "id": "ground-turkey",
+      "name": "Turkey, ground, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 203, "p": 27, "c": 0, "f": 10 }
+      ]
+    },
+    {
+      "id": "turkey-breast",
+      "name": "Turkey breast, roasted",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 147, "p": 30, "c": 0, "f": 2 }
+      ]
+    },
+    {
+      "id": "rotisserie-chicken",
+      "name": "Rotisserie chicken",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 190, "p": 25, "c": 0, "f": 10 }
+      ]
+    },
+    {
+      "id": "chicken-wings",
+      "name": "Chicken wings, roasted",
+      "portions": [
+        { "label": "1 wing (34 g)", "per": "per wing", "kcal": 99, "p": 9, "c": 0, "f": 6.5 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 290, "p": 27, "c": 0, "f": 19.5 }
+      ]
+    },
+    {
+      "id": "chicken-drumstick",
+      "name": "Chicken drumstick, roasted",
+      "portions": [
+        { "label": "1 drumstick", "per": "per drumstick", "kcal": 112, "p": 14, "c": 0, "f": 6 }
+      ]
+    },
+    {
+      "id": "deli-turkey",
+      "name": "Turkey, deli slices",
+      "portions": [
+        { "label": "1 slice (28 g)", "per": "per slice", "kcal": 30, "p": 5, "c": 1, "f": 0.5 }
+      ]
+    },
+    {
+      "id": "deli-ham",
+      "name": "Ham, deli slices",
+      "portions": [
+        { "label": "1 slice (28 g)", "per": "per slice", "kcal": 32, "p": 4.8, "c": 0.8, "f": 1 }
+      ]
+    },
+    {
+      "id": "salami",
+      "name": "Salami",
+      "portions": [
+        { "label": "3 slices (28 g)", "per": "per 28 g", "kcal": 119, "p": 6, "c": 0.5, "f": 10 }
+      ]
+    },
+    {
+      "id": "sausage-pork",
+      "name": "Sausage, pork, cooked",
+      "portions": [
+        { "label": "1 link (50 g)", "per": "per link", "kcal": 163, "p": 9, "c": 1, "f": 14 }
+      ]
+    },
+    {
+      "id": "hot-dog",
+      "name": "Hot dog",
+      "portions": [
+        { "label": "1 frank", "per": "per frank", "kcal": 151, "p": 5, "c": 2, "f": 13 }
+      ]
+    },
+    {
+      "id": "turkey-bacon",
+      "name": "Turkey bacon",
+      "portions": [
+        { "label": "Slice", "per": "per slice", "kcal": 30, "p": 2.4, "c": 0.3, "f": 2.1 }
+      ]
+    },
+    {
+      "id": "cod",
+      "name": "Cod, baked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 105, "p": 23, "c": 0, "f": 0.9 }
+      ]
+    },
+    {
+      "id": "tilapia",
+      "name": "Tilapia, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 128, "p": 26, "c": 0, "f": 2.7 }
+      ]
+    },
+    {
+      "id": "sardines",
+      "name": "Sardines, canned in oil",
+      "portions": [
+        { "label": "1 can (85 g)", "per": "per can", "kcal": 177, "p": 21, "c": 0, "f": 10 }
+      ]
+    },
+    {
+      "id": "lamb",
+      "name": "Lamb, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 258, "p": 25, "c": 0, "f": 17 }
+      ]
+    },
+    {
+      "id": "tempeh",
+      "name": "Tempeh",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 192, "p": 20, "c": 9, "f": 11 }
+      ]
+    },
+    {
+      "id": "edamame",
+      "name": "Edamame, shelled",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 121, "p": 12, "c": 9, "f": 5 }
+      ]
+    },
+    {
+      "id": "lavash",
+      "name": "Lavash bread",
+      "portions": [
+        { "label": "1 piece (40 g)", "per": "per piece", "kcal": 110, "p": 3.6, "c": 22, "f": 0.4 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 275, "p": 9, "c": 56, "f": 1 }
+      ]
+    },
+    {
+      "id": "barbari",
+      "name": "Barbari bread",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 290, "p": 9.5, "c": 57, "f": 2 }
+      ]
+    },
+    {
+      "id": "sangak",
+      "name": "Sangak bread",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 260, "p": 9, "c": 53, "f": 1.5 }
+      ]
+    },
+    {
+      "id": "pita",
+      "name": "Pita bread",
+      "portions": [
+        { "label": "1 pita (60 g)", "per": "per pita", "kcal": 165, "p": 5.5, "c": 33, "f": 0.7 }
+      ]
+    },
+    {
+      "id": "naan",
+      "name": "Naan",
+      "portions": [
+        { "label": "1 piece (90 g)", "per": "per piece", "kcal": 262, "p": 9, "c": 45, "f": 5 }
+      ]
+    },
+    {
+      "id": "tortilla-flour",
+      "name": "Tortilla, flour",
+      "portions": [
+        { "label": "1 medium (45 g)", "per": "per tortilla", "kcal": 140, "p": 4, "c": 24, "f": 3.5 }
+      ]
+    },
+    {
+      "id": "tortilla-corn",
+      "name": "Tortilla, corn",
+      "portions": [
+        { "label": "1 tortilla (26 g)", "per": "per tortilla", "kcal": 60, "p": 1.5, "c": 12, "f": 0.8 }
+      ]
+    },
+    {
+      "id": "rice-basmati",
+      "name": "Rice, basmati, cooked",
+      "portions": [
+        { "label": "1 bowl (200 g)", "per": "per bowl", "kcal": 242, "p": 7, "c": 50, "f": 0.8 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 121, "p": 3.5, "c": 25, "f": 0.4 }
+      ]
+    },
+    {
+      "id": "persian-rice",
+      "name": "Persian rice with oil (chelo)",
+      "portions": [
+        { "label": "1 plate (250 g)", "per": "per plate", "kcal": 380, "p": 6, "c": 70, "f": 9 }
+      ]
+    },
+    {
+      "id": "tahdig",
+      "name": "Tahdig",
+      "portions": [
+        { "label": "1 piece (50 g)", "per": "per piece", "kcal": 110, "p": 1.5, "c": 17, "f": 4 }
+      ]
+    },
+    {
+      "id": "kabob-koobideh",
+      "name": "Kabob koobideh",
+      "portions": [
+        { "label": "1 skewer", "per": "per skewer", "kcal": 330, "p": 20, "c": 3, "f": 26 }
+      ]
+    },
+    {
+      "id": "joojeh-kabob",
+      "name": "Joojeh kabob (chicken)",
+      "portions": [
+        { "label": "1 skewer", "per": "per skewer", "kcal": 260, "p": 35, "c": 2, "f": 12 }
+      ]
+    },
+    {
+      "id": "ghormeh-sabzi",
+      "name": "Ghormeh sabzi",
+      "portions": [
+        { "label": "1 bowl (300 g)", "per": "per bowl", "kcal": 350, "p": 25, "c": 12, "f": 22 }
+      ]
+    },
+    {
+      "id": "couscous",
+      "name": "Couscous, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 112, "p": 3.8, "c": 23, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "bulgur",
+      "name": "Bulgur, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 83, "p": 3.1, "c": 19, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "barley",
+      "name": "Barley, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 123, "p": 2.3, "c": 28, "f": 0.4 }
+      ]
+    },
+    {
+      "id": "rice-cake",
+      "name": "Rice cake",
+      "portions": [
+        { "label": "1 cake", "per": "per cake", "kcal": 35, "p": 0.7, "c": 7.3, "f": 0.3 }
+      ]
+    },
+    {
+      "id": "saltines",
+      "name": "Crackers, saltine",
+      "portions": [
+        { "label": "5 crackers", "per": "per 15 g", "kcal": 65, "p": 1.4, "c": 11, "f": 1.4 }
+      ]
+    },
+    {
+      "id": "cheese-crackers",
+      "name": "Crackers, cheese",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 150, "p": 3, "c": 17, "f": 8 }
+      ]
+    },
+    {
+      "id": "cereal",
+      "name": "Breakfast cereal",
+      "portions": [
+        { "label": "1 cup (30 g)", "per": "per cup", "kcal": 110, "p": 2, "c": 25, "f": 0.5 }
+      ]
+    },
+    {
+      "id": "english-muffin",
+      "name": "English muffin",
+      "portions": [
+        { "label": "1 muffin", "per": "per muffin", "kcal": 134, "p": 4.4, "c": 26, "f": 1 }
+      ]
+    },
+    {
+      "id": "pancake",
+      "name": "Pancake",
+      "portions": [
+        { "label": "1 medium (10 cm)", "per": "per pancake", "kcal": 90, "p": 2.4, "c": 15, "f": 2 },
+        { "label": "Stack of 3", "per": "per stack", "kcal": 270, "p": 7.2, "c": 45, "f": 6 }
+      ]
+    },
+    {
+      "id": "waffle",
+      "name": "Waffle",
+      "portions": [
+        { "label": "1 waffle (75 g)", "per": "per waffle", "kcal": 218, "p": 5.9, "c": 25, "f": 11 }
+      ]
+    },
+    {
+      "id": "muffin-blueberry",
+      "name": "Blueberry muffin",
+      "portions": [
+        { "label": "1 medium (110 g)", "per": "per muffin", "kcal": 385, "p": 6, "c": 55, "f": 16 }
+      ]
+    },
+    {
+      "id": "donut",
+      "name": "Donut, glazed",
+      "portions": [
+        { "label": "1 donut", "per": "per donut", "kcal": 240, "p": 3, "c": 28, "f": 13 }
+      ]
+    },
+    {
+      "id": "tortilla-chips",
+      "name": "Tortilla chips",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 142, "p": 2, "c": 19, "f": 7 }
+      ]
+    },
+    {
+      "id": "pretzels",
+      "name": "Pretzels",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 108, "p": 2.9, "c": 23, "f": 0.8 }
+      ]
+    },
+    {
+      "id": "instant-noodles",
+      "name": "Instant noodles",
+      "portions": [
+        { "label": "1 pack (85 g)", "per": "per pack", "kcal": 380, "p": 9, "c": 52, "f": 14 }
+      ]
+    },
+    {
+      "id": "mac-cheese",
+      "name": "Mac and cheese",
+      "portions": [
+        { "label": "1 cup (200 g)", "per": "per cup", "kcal": 350, "p": 12, "c": 44, "f": 14 }
+      ]
+    },
+    {
+      "id": "corn",
+      "name": "Corn, cooked",
+      "portions": [
+        { "label": "1 ear", "per": "per ear", "kcal": 88, "p": 3.3, "c": 19, "f": 1.4 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 96, "p": 3.4, "c": 21, "f": 1.5 }
+      ]
+    },
+    {
+      "id": "garlic-bread",
+      "name": "Garlic bread",
+      "portions": [
+        { "label": "Slice", "per": "per slice", "kcal": 150, "p": 3.6, "c": 17, "f": 7 }
+      ]
+    },
+    {
+      "id": "kidney-beans",
+      "name": "Kidney beans, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 127, "p": 8.7, "c": 23, "f": 0.5 }
+      ]
+    },
+    {
+      "id": "pinto-beans",
+      "name": "Pinto beans, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 143, "p": 9, "c": 26, "f": 0.7 }
+      ]
+    },
+    {
+      "id": "refried-beans",
+      "name": "Refried beans",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 90, "p": 5, "c": 15, "f": 1.2 }
+      ]
+    },
+    {
+      "id": "green-peas",
+      "name": "Green peas, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 84, "p": 5.4, "c": 16, "f": 0.4 }
+      ]
+    },
+    {
+      "id": "falafel",
+      "name": "Falafel",
+      "portions": [
+        { "label": "3 patties (51 g)", "per": "per 3 patties", "kcal": 170, "p": 6.8, "c": 16, "f": 9 },
+        { "label": "100 g", "per": "per 100 g", "kcal": 333, "p": 13.3, "c": 31.8, "f": 17.8 }
+      ]
+    },
+    {
+      "id": "lettuce-romaine",
+      "name": "Lettuce, romaine",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 17, "p": 1.2, "c": 3.3, "f": 0.3 }
+      ]
+    },
+    {
+      "id": "kale",
+      "name": "Kale, raw",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 35, "p": 2.9, "c": 4.4, "f": 1.5 }
+      ]
+    },
+    {
+      "id": "cabbage",
+      "name": "Cabbage, raw",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 25, "p": 1.3, "c": 5.8, "f": 0.1 }
+      ]
+    },
+    {
+      "id": "cauliflower",
+      "name": "Cauliflower, raw",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 25, "p": 1.9, "c": 5, "f": 0.3 }
+      ]
+    },
+    {
+      "id": "zucchini",
+      "name": "Zucchini, raw",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 17, "p": 1.2, "c": 3.1, "f": 0.3 }
+      ]
+    },
+    {
+      "id": "bell-pepper",
+      "name": "Bell pepper",
+      "portions": [
+        { "label": "Medium", "per": "per pepper", "kcal": 31, "p": 1.2, "c": 7.2, "f": 0.4 }
+      ]
+    },
+    {
+      "id": "onion",
+      "name": "Onion",
+      "portions": [
+        { "label": "Medium", "per": "per onion", "kcal": 44, "p": 1.2, "c": 10, "f": 0.1 }
+      ]
+    },
+    {
+      "id": "garlic",
+      "name": "Garlic",
+      "portions": [
+        { "label": "1 clove", "per": "per clove", "kcal": 4, "p": 0.2, "c": 1, "f": 0 }
+      ]
+    },
+    {
+      "id": "mushrooms",
+      "name": "Mushrooms, raw",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 22, "p": 3.1, "c": 3.3, "f": 0.3 }
+      ]
+    },
+    {
+      "id": "green-beans",
+      "name": "Green beans, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 31, "p": 1.8, "c": 7, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "asparagus",
+      "name": "Asparagus, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 20, "p": 2.2, "c": 3.9, "f": 0.1 }
+      ]
+    },
+    {
+      "id": "celery",
+      "name": "Celery",
+      "portions": [
+        { "label": "1 stalk", "per": "per stalk", "kcal": 6, "p": 0.3, "c": 1.2, "f": 0.1 }
+      ]
+    },
+    {
+      "id": "beets",
+      "name": "Beets, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 44, "p": 1.7, "c": 10, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "brussels-sprouts",
+      "name": "Brussels sprouts, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 36, "p": 2.6, "c": 7, "f": 0.5 }
+      ]
+    },
+    {
+      "id": "butternut-squash",
+      "name": "Butternut squash, cooked",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 40, "p": 0.9, "c": 10.5, "f": 0.1 }
+      ]
+    },
+    {
+      "id": "olives",
+      "name": "Olives",
+      "portions": [
+        { "label": "10 olives (30 g)", "per": "per 30 g", "kcal": 44, "p": 0.3, "c": 2, "f": 4 }
+      ]
+    },
+    {
+      "id": "pickles",
+      "name": "Pickle, dill",
+      "portions": [
+        { "label": "1 spear", "per": "per spear", "kcal": 4, "p": 0.2, "c": 0.8, "f": 0.1 }
+      ]
+    },
+    {
+      "id": "watermelon",
+      "name": "Watermelon",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 30, "p": 0.6, "c": 7.6, "f": 0.2 },
+        { "label": "1 wedge (280 g)", "per": "per wedge", "kcal": 84, "p": 1.7, "c": 21, "f": 0.6 }
+      ]
+    },
+    {
+      "id": "mango",
+      "name": "Mango",
+      "portions": [
+        { "label": "1 cup (165 g)", "per": "per cup", "kcal": 99, "p": 1.4, "c": 25, "f": 0.6 }
+      ]
+    },
+    {
+      "id": "pineapple",
+      "name": "Pineapple",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 50, "p": 0.5, "c": 13, "f": 0.1 }
+      ]
+    },
+    {
+      "id": "peach",
+      "name": "Peach",
+      "portions": [
+        { "label": "Medium", "per": "per peach", "kcal": 59, "p": 1.4, "c": 14, "f": 0.4 }
+      ]
+    },
+    {
+      "id": "pear",
+      "name": "Pear",
+      "portions": [
+        { "label": "Medium", "per": "per pear", "kcal": 101, "p": 0.6, "c": 27, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "cherries",
+      "name": "Cherries",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 63, "p": 1.1, "c": 16, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "kiwi",
+      "name": "Kiwi",
+      "portions": [
+        { "label": "1 fruit", "per": "per kiwi", "kcal": 42, "p": 0.8, "c": 10, "f": 0.4 }
+      ]
+    },
+    {
+      "id": "pomegranate",
+      "name": "Pomegranate arils",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 83, "p": 1.7, "c": 19, "f": 1.2 },
+        { "label": "1 fruit (174 g arils)", "per": "per fruit", "kcal": 144, "p": 3, "c": 32, "f": 2 }
+      ]
+    },
+    {
+      "id": "dates",
+      "name": "Date, medjool",
+      "portions": [
+        { "label": "1 date", "per": "per date", "kcal": 66, "p": 0.4, "c": 18, "f": 0 }
+      ]
+    },
+    {
+      "id": "raisins",
+      "name": "Raisins",
+      "portions": [
+        { "label": "Small box (28 g)", "per": "per 28 g", "kcal": 85, "p": 0.9, "c": 22, "f": 0.1 }
+      ]
+    },
+    {
+      "id": "dried-apricots",
+      "name": "Dried apricots",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 72, "p": 1, "c": 19, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "cantaloupe",
+      "name": "Cantaloupe",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 34, "p": 0.8, "c": 8.2, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "grapefruit",
+      "name": "Grapefruit",
+      "portions": [
+        { "label": "Half", "per": "per half", "kcal": 52, "p": 0.9, "c": 13, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "raspberries",
+      "name": "Raspberries",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 52, "p": 1.2, "c": 12, "f": 0.7 }
+      ]
+    },
+    {
+      "id": "blackberries",
+      "name": "Blackberries",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 43, "p": 1.4, "c": 10, "f": 0.5 }
+      ]
+    },
+    {
+      "id": "clementine",
+      "name": "Clementine",
+      "portions": [
+        { "label": "1 fruit", "per": "per clementine", "kcal": 35, "p": 0.6, "c": 9, "f": 0.1 }
+      ]
+    },
+    {
+      "id": "plum",
+      "name": "Plum",
+      "portions": [
+        { "label": "1 fruit", "per": "per plum", "kcal": 30, "p": 0.5, "c": 7.5, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "applesauce",
+      "name": "Applesauce, unsweetened",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 42, "p": 0.2, "c": 11, "f": 0.1 }
+      ]
+    },
+    {
+      "id": "milk-2pct",
+      "name": "Milk, 2%",
+      "portions": [
+        { "label": "250 ml", "per": "per glass", "kcal": 122, "p": 8, "c": 12, "f": 4.8 }
+      ]
+    },
+    {
+      "id": "almond-milk",
+      "name": "Almond milk, unsweetened",
+      "portions": [
+        { "label": "250 ml", "per": "per glass", "kcal": 30, "p": 1, "c": 1, "f": 2.5 }
+      ]
+    },
+    {
+      "id": "soy-milk",
+      "name": "Soy milk, unsweetened",
+      "portions": [
+        { "label": "250 ml", "per": "per glass", "kcal": 80, "p": 7, "c": 4, "f": 4 }
+      ]
+    },
+    {
+      "id": "heavy-cream",
+      "name": "Heavy cream",
+      "portions": [
+        { "label": "1 tbsp (15 ml)", "per": "per tbsp", "kcal": 51, "p": 0.4, "c": 0.4, "f": 5.4 }
+      ]
+    },
+    {
+      "id": "half-and-half",
+      "name": "Half and half",
+      "portions": [
+        { "label": "1 tbsp (15 ml)", "per": "per tbsp", "kcal": 20, "p": 0.4, "c": 0.6, "f": 1.7 }
+      ]
+    },
+    {
+      "id": "sour-cream",
+      "name": "Sour cream",
+      "portions": [
+        { "label": "2 tbsp (30 g)", "per": "per 30 g", "kcal": 60, "p": 0.7, "c": 1.4, "f": 5.9 }
+      ]
+    },
+    {
+      "id": "cream-cheese",
+      "name": "Cream cheese",
+      "portions": [
+        { "label": "2 tbsp (30 g)", "per": "per 30 g", "kcal": 100, "p": 1.8, "c": 1.6, "f": 9.8 }
+      ]
+    },
+    {
+      "id": "parmesan",
+      "name": "Parmesan",
+      "portions": [
+        { "label": "1 tbsp grated (5 g)", "per": "per tbsp", "kcal": 21, "p": 1.9, "c": 0.2, "f": 1.4 },
+        { "label": "30 g", "per": "per 30 g", "kcal": 127, "p": 11.5, "c": 1, "f": 8.5 }
+      ]
+    },
+    {
+      "id": "feta",
+      "name": "Feta cheese",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 79, "p": 4.3, "c": 1.2, "f": 6.4 }
+      ]
+    },
+    {
+      "id": "swiss-cheese",
+      "name": "Swiss cheese",
+      "portions": [
+        { "label": "1 slice (28 g)", "per": "per slice", "kcal": 106, "p": 7.5, "c": 0.4, "f": 8.3 }
+      ]
+    },
+    {
+      "id": "string-cheese",
+      "name": "String cheese",
+      "portions": [
+        { "label": "1 stick", "per": "per stick", "kcal": 80, "p": 7, "c": 1, "f": 6 }
+      ]
+    },
+    {
+      "id": "ricotta",
+      "name": "Ricotta",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 174, "p": 11, "c": 3, "f": 13 }
+      ]
+    },
+    {
+      "id": "skyr",
+      "name": "Skyr, nonfat",
+      "portions": [
+        { "label": "170 g", "per": "per 170 g", "kcal": 110, "p": 19, "c": 7, "f": 0 }
+      ]
+    },
+    {
+      "id": "kefir",
+      "name": "Kefir",
+      "portions": [
+        { "label": "250 ml", "per": "per glass", "kcal": 110, "p": 9, "c": 12, "f": 2.5 }
+      ]
+    },
+    {
+      "id": "yogurt-fruit",
+      "name": "Yogurt, fruit, low-fat",
+      "portions": [
+        { "label": "170 g", "per": "per 170 g", "kcal": 150, "p": 6, "c": 28, "f": 1.8 }
+      ]
+    },
+    {
+      "id": "pistachios",
+      "name": "Pistachios",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 168, "p": 6, "c": 8.4, "f": 13.6 }
+      ]
+    },
+    {
+      "id": "peanuts",
+      "name": "Peanuts",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 170, "p": 7.8, "c": 4.8, "f": 14.7 }
+      ]
+    },
+    {
+      "id": "pecans",
+      "name": "Pecans",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 207, "p": 2.8, "c": 4.2, "f": 21.6 }
+      ]
+    },
+    {
+      "id": "mixed-nuts",
+      "name": "Mixed nuts",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 178, "p": 5, "c": 6.5, "f": 15.5 }
+      ]
+    },
+    {
+      "id": "trail-mix",
+      "name": "Trail mix",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 137, "p": 4, "c": 13, "f": 9 }
+      ]
+    },
+    {
+      "id": "almond-butter",
+      "name": "Almond butter",
+      "portions": [
+        { "label": "1 tbsp (16 g)", "per": "per tbsp", "kcal": 98, "p": 3.4, "c": 3, "f": 8.9 }
+      ]
+    },
+    {
+      "id": "tahini",
+      "name": "Tahini",
+      "portions": [
+        { "label": "1 tbsp (15 g)", "per": "per tbsp", "kcal": 89, "p": 2.6, "c": 3.2, "f": 8 }
+      ]
+    },
+    {
+      "id": "chia-seeds",
+      "name": "Chia seeds",
+      "portions": [
+        { "label": "1 tbsp (12 g)", "per": "per tbsp", "kcal": 58, "p": 2, "c": 5, "f": 3.7 }
+      ]
+    },
+    {
+      "id": "flaxseed",
+      "name": "Flaxseed, ground",
+      "portions": [
+        { "label": "1 tbsp (10 g)", "per": "per tbsp", "kcal": 55, "p": 1.9, "c": 3, "f": 4.3 }
+      ]
+    },
+    {
+      "id": "sunflower-seeds",
+      "name": "Sunflower seeds",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 175, "p": 5.8, "c": 6, "f": 15.4 }
+      ]
+    },
+    {
+      "id": "pumpkin-seeds",
+      "name": "Pumpkin seeds",
+      "portions": [
+        { "label": "30 g", "per": "per 30 g", "kcal": 168, "p": 8.8, "c": 3.2, "f": 14.1 }
+      ]
+    },
+    {
+      "id": "coconut-oil",
+      "name": "Coconut oil",
+      "portions": [
+        { "label": "1 tbsp (14 g)", "per": "per tbsp", "kcal": 117, "p": 0, "c": 0, "f": 13.6 }
+      ]
+    },
+    {
+      "id": "vegetable-oil",
+      "name": "Vegetable oil",
+      "portions": [
+        { "label": "1 tbsp (14 g)", "per": "per tbsp", "kcal": 120, "p": 0, "c": 0, "f": 13.6 }
+      ]
+    },
+    {
+      "id": "ghee",
+      "name": "Ghee",
+      "portions": [
+        { "label": "1 tbsp (13 g)", "per": "per tbsp", "kcal": 112, "p": 0, "c": 0, "f": 12.7 }
+      ]
+    },
+    {
+      "id": "mayonnaise",
+      "name": "Mayonnaise",
+      "portions": [
+        { "label": "1 tbsp (13 g)", "per": "per tbsp", "kcal": 94, "p": 0.1, "c": 0.1, "f": 10.3 }
+      ]
+    },
+    {
+      "id": "ketchup",
+      "name": "Ketchup",
+      "portions": [
+        { "label": "1 tbsp (17 g)", "per": "per tbsp", "kcal": 17, "p": 0.2, "c": 4.5, "f": 0 }
+      ]
+    },
+    {
+      "id": "mustard",
+      "name": "Mustard",
+      "portions": [
+        { "label": "1 tsp", "per": "per tsp", "kcal": 3, "p": 0.2, "c": 0.3, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "soy-sauce",
+      "name": "Soy sauce",
+      "portions": [
+        { "label": "1 tbsp (16 g)", "per": "per tbsp", "kcal": 8, "p": 1.3, "c": 0.8, "f": 0 }
+      ]
+    },
+    {
+      "id": "sriracha",
+      "name": "Sriracha",
+      "portions": [
+        { "label": "1 tsp", "per": "per tsp", "kcal": 5, "p": 0.1, "c": 1, "f": 0 }
+      ]
+    },
+    {
+      "id": "bbq-sauce",
+      "name": "BBQ sauce",
+      "portions": [
+        { "label": "2 tbsp (36 g)", "per": "per 2 tbsp", "kcal": 58, "p": 0.3, "c": 14, "f": 0.2 }
+      ]
+    },
+    {
+      "id": "ranch-dressing",
+      "name": "Ranch dressing",
+      "portions": [
+        { "label": "2 tbsp (30 g)", "per": "per 2 tbsp", "kcal": 129, "p": 0.4, "c": 1.8, "f": 13.4 }
+      ]
+    },
+    {
+      "id": "caesar-dressing",
+      "name": "Caesar dressing",
+      "portions": [
+        { "label": "2 tbsp (30 g)", "per": "per 2 tbsp", "kcal": 163, "p": 0.4, "c": 1, "f": 17.3 }
+      ]
+    },
+    {
+      "id": "italian-dressing",
+      "name": "Italian dressing",
+      "portions": [
+        { "label": "2 tbsp (30 g)", "per": "per 2 tbsp", "kcal": 71, "p": 0.1, "c": 3.1, "f": 6.2 }
+      ]
+    },
+    {
+      "id": "balsamic-vinaigrette",
+      "name": "Balsamic vinaigrette",
+      "portions": [
+        { "label": "2 tbsp (30 g)", "per": "per 2 tbsp", "kcal": 88, "p": 0, "c": 3.5, "f": 8 }
+      ]
+    },
+    {
+      "id": "salsa",
+      "name": "Salsa",
+      "portions": [
+        { "label": "2 tbsp (32 g)", "per": "per 2 tbsp", "kcal": 9, "p": 0.4, "c": 2, "f": 0 }
+      ]
+    },
+    {
+      "id": "guacamole",
+      "name": "Guacamole",
+      "portions": [
+        { "label": "2 tbsp (30 g)", "per": "per 2 tbsp", "kcal": 45, "p": 0.6, "c": 2.6, "f": 4 }
+      ]
+    },
+    {
+      "id": "pesto",
+      "name": "Pesto",
+      "portions": [
+        { "label": "2 tbsp (30 g)", "per": "per 2 tbsp", "kcal": 135, "p": 2.5, "c": 2, "f": 13 }
+      ]
+    },
+    {
+      "id": "marinara",
+      "name": "Marinara sauce",
+      "portions": [
+        { "label": "1/2 cup (125 g)", "per": "per 1/2 cup", "kcal": 66, "p": 1.8, "c": 10, "f": 2 }
+      ]
+    },
+    {
+      "id": "alfredo-sauce",
+      "name": "Alfredo sauce",
+      "portions": [
+        { "label": "1/4 cup (60 g)", "per": "per 1/4 cup", "kcal": 110, "p": 2, "c": 3, "f": 10 }
+      ]
+    },
+    {
+      "id": "maple-syrup",
+      "name": "Maple syrup",
+      "portions": [
+        { "label": "1 tbsp (20 g)", "per": "per tbsp", "kcal": 52, "p": 0, "c": 13.4, "f": 0 }
+      ]
+    },
+    {
+      "id": "jam",
+      "name": "Jam",
+      "portions": [
+        { "label": "1 tbsp (20 g)", "per": "per tbsp", "kcal": 56, "p": 0.1, "c": 14, "f": 0 }
+      ]
+    },
+    {
+      "id": "nutella",
+      "name": "Nutella",
+      "portions": [
+        { "label": "1 tbsp (19 g)", "per": "per tbsp", "kcal": 100, "p": 1, "c": 11, "f": 5.6 }
+      ]
+    },
+    {
+      "id": "teriyaki-sauce",
+      "name": "Teriyaki sauce",
+      "portions": [
+        { "label": "1 tbsp (18 g)", "per": "per tbsp", "kcal": 16, "p": 0.9, "c": 2.8, "f": 0 }
+      ]
+    },
+    {
+      "id": "tea",
+      "name": "Tea, unsweetened",
+      "portions": [
+        { "label": "250 ml", "per": "per cup", "kcal": 2, "p": 0, "c": 0.5, "f": 0 }
+      ]
+    },
+    {
+      "id": "diet-soda",
+      "name": "Diet soda",
+      "portions": [
+        { "label": "330 ml", "per": "per can", "kcal": 0, "p": 0, "c": 0, "f": 0 }
+      ]
+    },
+    {
+      "id": "kombucha",
+      "name": "Kombucha",
+      "portions": [
+        { "label": "250 ml", "per": "per glass", "kcal": 35, "p": 0, "c": 8, "f": 0 }
+      ]
+    },
+    {
+      "id": "coconut-water",
+      "name": "Coconut water",
+      "portions": [
+        { "label": "250 ml", "per": "per glass", "kcal": 46, "p": 1.8, "c": 9, "f": 0.5 }
+      ]
+    },
+    {
+      "id": "apple-juice",
+      "name": "Apple juice",
+      "portions": [
+        { "label": "250 ml", "per": "per glass", "kcal": 114, "p": 0.2, "c": 28, "f": 0.3 }
+      ]
+    },
+    {
+      "id": "lemonade",
+      "name": "Lemonade",
+      "portions": [
+        { "label": "250 ml", "per": "per glass", "kcal": 99, "p": 0.2, "c": 26, "f": 0.1 }
+      ]
+    },
+    {
+      "id": "energy-drink",
+      "name": "Energy drink",
+      "portions": [
+        { "label": "250 ml", "per": "per can", "kcal": 110, "p": 0, "c": 28, "f": 0 }
+      ]
+    },
+    {
+      "id": "wine-white",
+      "name": "Wine, white",
+      "portions": [
+        { "label": "150 ml", "per": "per glass", "kcal": 121, "p": 0.1, "c": 3.8, "f": 0 }
+      ]
+    },
+    {
+      "id": "spirits",
+      "name": "Spirits (vodka, whiskey)",
+      "portions": [
+        { "label": "1 shot (45 ml)", "per": "per shot", "kcal": 97, "p": 0, "c": 0, "f": 0 }
+      ]
+    },
+    {
+      "id": "margarita",
+      "name": "Margarita",
+      "portions": [
+        { "label": "1 cocktail", "per": "per cocktail", "kcal": 200, "p": 0, "c": 13, "f": 0 }
+      ]
+    },
+    {
+      "id": "hot-chocolate",
+      "name": "Hot chocolate",
+      "portions": [
+        { "label": "250 ml", "per": "per cup", "kcal": 190, "p": 8, "c": 27, "f": 6 }
+      ]
+    },
+    {
+      "id": "espresso",
+      "name": "Espresso",
+      "portions": [
+        { "label": "1 shot", "per": "per shot", "kcal": 3, "p": 0.1, "c": 0.5, "f": 0 }
+      ]
+    },
+    {
+      "id": "matcha-latte",
+      "name": "Matcha latte",
+      "portions": [
+        { "label": "350 ml", "per": "per 350 ml", "kcal": 190, "p": 6, "c": 27, "f": 6 }
+      ]
+    },
+    {
+      "id": "milkshake",
+      "name": "Milkshake",
+      "portions": [
+        { "label": "350 ml", "per": "per 350 ml", "kcal": 420, "p": 10, "c": 68, "f": 11 }
+      ]
+    },
+    {
+      "id": "boba",
+      "name": "Bubble tea, milk",
+      "portions": [
+        { "label": "500 ml", "per": "per 500 ml", "kcal": 400, "p": 6, "c": 64, "f": 12 }
+      ]
+    },
+    {
+      "id": "hamburger",
+      "name": "Hamburger, plain",
+      "portions": [
+        { "label": "1 burger", "per": "per burger", "kcal": 420, "p": 24, "c": 38, "f": 20 }
+      ]
+    },
+    {
+      "id": "chicken-sandwich",
+      "name": "Chicken sandwich, fried",
+      "portions": [
+        { "label": "1 sandwich", "per": "per sandwich", "kcal": 490, "p": 28, "c": 46, "f": 22 }
+      ]
+    },
+    {
+      "id": "taco",
+      "name": "Taco, beef",
+      "portions": [
+        { "label": "1 taco", "per": "per taco", "kcal": 170, "p": 8, "c": 13, "f": 10 }
+      ]
+    },
+    {
+      "id": "quesadilla",
+      "name": "Quesadilla, cheese",
+      "portions": [
+        { "label": "1 quesadilla", "per": "per quesadilla", "kcal": 500, "p": 18, "c": 40, "f": 30 }
+      ]
+    },
+    {
+      "id": "burrito-bowl",
+      "name": "Burrito bowl, chicken",
+      "portions": [
+        { "label": "1 bowl", "per": "per bowl", "kcal": 650, "p": 40, "c": 65, "f": 25 }
+      ]
+    },
+    {
+      "id": "chow-mein",
+      "name": "Chow mein, chicken",
+      "portions": [
+        { "label": "1 plate", "per": "per plate", "kcal": 510, "p": 24, "c": 60, "f": 20 }
+      ]
+    },
+    {
+      "id": "orange-chicken",
+      "name": "Orange chicken",
+      "portions": [
+        { "label": "1 serving", "per": "per serving", "kcal": 490, "p": 25, "c": 51, "f": 23 }
+      ]
+    },
+    {
+      "id": "curry-chicken",
+      "name": "Chicken curry with rice",
+      "portions": [
+        { "label": "1 plate", "per": "per plate", "kcal": 650, "p": 32, "c": 70, "f": 26 }
+      ]
+    },
+    {
+      "id": "pho",
+      "name": "Pho, beef",
+      "portions": [
+        { "label": "1 bowl", "per": "per bowl", "kcal": 450, "p": 28, "c": 55, "f": 12 }
+      ]
+    },
+    {
+      "id": "gyro",
+      "name": "Gyro / shawarma wrap",
+      "portions": [
+        { "label": "1 wrap", "per": "per wrap", "kcal": 550, "p": 28, "c": 48, "f": 28 }
+      ]
+    },
+    {
+      "id": "fish-and-chips",
+      "name": "Fish and chips",
+      "portions": [
+        { "label": "1 serving", "per": "per serving", "kcal": 840, "p": 40, "c": 77, "f": 44 }
+      ]
+    },
+    {
+      "id": "grilled-cheese",
+      "name": "Grilled cheese sandwich",
+      "portions": [
+        { "label": "1 sandwich", "per": "per sandwich", "kcal": 400, "p": 11, "c": 34, "f": 23 }
+      ]
+    },
+    {
+      "id": "blt",
+      "name": "BLT sandwich",
+      "portions": [
+        { "label": "1 sandwich", "per": "per sandwich", "kcal": 400, "p": 15, "c": 38, "f": 20 }
+      ]
+    },
+    {
+      "id": "pbj",
+      "name": "Peanut butter & jelly sandwich",
+      "portions": [
+        { "label": "1 sandwich", "per": "per sandwich", "kcal": 380, "p": 12, "c": 48, "f": 16 }
+      ]
+    },
+    {
+      "id": "avocado-toast",
+      "name": "Avocado toast",
+      "portions": [
+        { "label": "1 slice", "per": "per slice", "kcal": 250, "p": 6, "c": 26, "f": 14 }
+      ]
+    },
+    {
+      "id": "omelette",
+      "name": "Omelette, cheese",
+      "portions": [
+        { "label": "2 eggs", "per": "per omelette", "kcal": 280, "p": 18, "c": 2, "f": 21 }
+      ]
+    },
+    {
+      "id": "breakfast-burrito",
+      "name": "Breakfast burrito",
+      "portions": [
+        { "label": "1 burrito", "per": "per burrito", "kcal": 550, "p": 24, "c": 52, "f": 27 }
+      ]
+    },
+    {
+      "id": "pizza-pepperoni",
+      "name": "Pizza, pepperoni",
+      "portions": [
+        { "label": "Slice", "per": "per slice", "kcal": 285, "p": 12, "c": 36, "f": 12 }
+      ]
+    },
+    {
+      "id": "lasagna",
+      "name": "Lasagna",
+      "portions": [
+        { "label": "1 piece (250 g)", "per": "per piece", "kcal": 350, "p": 22, "c": 28, "f": 16 }
+      ]
+    },
+    {
+      "id": "spaghetti-bolognese",
+      "name": "Spaghetti bolognese",
+      "portions": [
+        { "label": "1 plate", "per": "per plate", "kcal": 560, "p": 26, "c": 68, "f": 18 }
+      ]
+    },
+    {
+      "id": "fried-chicken",
+      "name": "Fried chicken",
+      "portions": [
+        { "label": "1 breast piece", "per": "per piece", "kcal": 390, "p": 35, "c": 12, "f": 20 }
+      ]
+    },
+    {
+      "id": "chicken-nuggets",
+      "name": "Chicken nuggets",
+      "portions": [
+        { "label": "6 pieces", "per": "per 6 pieces", "kcal": 270, "p": 14, "c": 16, "f": 17 }
+      ]
+    },
+    {
+      "id": "poke-bowl",
+      "name": "Poke bowl",
+      "portions": [
+        { "label": "1 bowl", "per": "per bowl", "kcal": 550, "p": 32, "c": 62, "f": 18 }
+      ]
+    },
+    {
+      "id": "greek-salad",
+      "name": "Greek salad",
+      "portions": [
+        { "label": "1 bowl", "per": "per bowl", "kcal": 320, "p": 8, "c": 14, "f": 24 }
+      ]
+    },
+    {
+      "id": "cobb-salad",
+      "name": "Cobb salad",
+      "portions": [
+        { "label": "1 bowl", "per": "per bowl", "kcal": 500, "p": 32, "c": 12, "f": 35 }
+      ]
+    },
+    {
+      "id": "tuna-salad",
+      "name": "Tuna salad with mayo",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 187, "p": 16, "c": 9, "f": 9.5 }
+      ]
+    },
+    {
+      "id": "chicken-salad-mayo",
+      "name": "Chicken salad with mayo",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 205, "p": 17, "c": 3, "f": 14 }
+      ]
+    },
+    {
+      "id": "coleslaw",
+      "name": "Coleslaw",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 150, "p": 1, "c": 13, "f": 11 }
+      ]
+    },
+    {
+      "id": "potato-salad",
+      "name": "Potato salad",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 143, "p": 2.6, "c": 16, "f": 8 }
+      ]
+    },
+    {
+      "id": "summer-roll",
+      "name": "Spring roll, fresh",
+      "portions": [
+        { "label": "1 roll", "per": "per roll", "kcal": 100, "p": 4, "c": 15, "f": 3 }
+      ]
+    },
+    {
+      "id": "dumplings",
+      "name": "Dumplings / potstickers",
+      "portions": [
+        { "label": "6 pieces", "per": "per 6 pieces", "kcal": 350, "p": 14, "c": 40, "f": 14 }
+      ]
+    },
+    {
+      "id": "miso-soup",
+      "name": "Miso soup",
+      "portions": [
+        { "label": "1 bowl", "per": "per bowl", "kcal": 40, "p": 3, "c": 5, "f": 1 }
+      ]
+    },
+    {
+      "id": "california-roll",
+      "name": "California roll",
+      "portions": [
+        { "label": "8 pieces", "per": "per roll", "kcal": 255, "p": 9, "c": 38, "f": 7 }
+      ]
+    },
+    {
+      "id": "mashed-potatoes",
+      "name": "Mashed potatoes",
+      "portions": [
+        { "label": "1 cup (210 g)", "per": "per cup", "kcal": 214, "p": 4, "c": 35, "f": 7 }
+      ]
+    },
+    {
+      "id": "hash-browns",
+      "name": "Hash browns",
+      "portions": [
+        { "label": "1 patty (55 g)", "per": "per patty", "kcal": 140, "p": 1.5, "c": 15, "f": 8 }
+      ]
+    },
+    {
+      "id": "chicken-wrap",
+      "name": "Chicken wrap",
+      "portions": [
+        { "label": "1 wrap", "per": "per wrap", "kcal": 450, "p": 28, "c": 42, "f": 18 }
+      ]
+    },
+    {
+      "id": "brownie",
+      "name": "Brownie",
+      "portions": [
+        { "label": "1 square (56 g)", "per": "per square", "kcal": 227, "p": 2.7, "c": 36, "f": 9 }
+      ]
+    },
+    {
+      "id": "cake",
+      "name": "Cake with frosting",
+      "portions": [
+        { "label": "1 slice (100 g)", "per": "per slice", "kcal": 370, "p": 3.5, "c": 55, "f": 15 }
+      ]
+    },
+    {
+      "id": "cheesecake",
+      "name": "Cheesecake",
+      "portions": [
+        { "label": "1 slice (125 g)", "per": "per slice", "kcal": 400, "p": 7, "c": 32, "f": 28 }
+      ]
+    },
+    {
+      "id": "apple-pie",
+      "name": "Apple pie",
+      "portions": [
+        { "label": "1 slice", "per": "per slice", "kcal": 296, "p": 2.4, "c": 43, "f": 14 }
+      ]
+    },
+    {
+      "id": "cupcake",
+      "name": "Cupcake, frosted",
+      "portions": [
+        { "label": "1 cupcake", "per": "per cupcake", "kcal": 305, "p": 3, "c": 46, "f": 12 }
+      ]
+    },
+    {
+      "id": "gummy-candy",
+      "name": "Gummy candy",
+      "portions": [
+        { "label": "40 g", "per": "per 40 g", "kcal": 130, "p": 2.5, "c": 30, "f": 0 }
+      ]
+    },
+    {
+      "id": "granola-bar",
+      "name": "Granola bar",
+      "portions": [
+        { "label": "1 bar (25 g)", "per": "per bar", "kcal": 100, "p": 2, "c": 17, "f": 3 }
+      ]
+    },
+    {
+      "id": "frozen-yogurt",
+      "name": "Frozen yogurt",
+      "portions": [
+        { "label": "100 g", "per": "per 100 g", "kcal": 127, "p": 3, "c": 22, "f": 4 }
+      ]
+    }
+  ]
+}

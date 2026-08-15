@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "813154581368",
+    "project_id": "body-sync-51bb7",
+    "storage_bucket": "body-sync-51bb7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:813154581368:android:3b80ade987dd267e62e68d",
+        "android_client_info": {
+          "package_name": "com.example.body_sync"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0XP7J0tG-5GKHwWTW8hffwgw_xAwWUIg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:813154581368:android:f8e11e60c0f1882662e68d",
+        "android_client_info": {
+          "package_name": "com.mehrnaz.bodysync"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0XP7J0tG-5GKHwWTW8hffwgw_xAwWUIg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

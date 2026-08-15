@@ -1,145 +1,87 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:body_sync/calorie_intake_view/cal_intake_view.dart';
-import 'package:body_sync/weight_view/weight_view.dart';
-import 'package:body_sync/workout_view/workout_view.dart';
-import 'package:body_sync/common/data_handler.dart';
-import 'layout/theme.dart';
+import 'data/app_store.dart';
+import 'data/notification_service.dart';
+import 'firebase_options.dart';
+import 'screens/auth/sign_in_screen.dart';
+import 'screens/onboarding/onboarding_flow.dart';
+import 'screens/settings/recovery_screen.dart';
+import 'screens/shell.dart';
+import 'theme/bs_theme.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  final store = AppStore();
+  final notifications = NotificationService();
+  notifications.init();
+
+  store.load().then((_) {
+    notifications.sync(store);
+    FirebaseAuth.instance
+        .authStateChanges()
+        .listen((user) => store.setUser(user?.uid));
+  });
+
+  var lastSettings = store.settings;
+  store.addListener(() {
+    if (!identical(store.settings, lastSettings)) {
+      lastSettings = store.settings;
+      notifications.sync(store);
+    }
+  });
+
   runApp(
     MultiProvider(
       providers: [
-        Provider<DataHandler>(create: (_) => DataHandler()),
+        ChangeNotifierProvider<AppStore>.value(value: store),
+        Provider<NotificationService>.value(value: notifications),
       ],
-      child: MyApp(),
+      child: const BodySyncApp(),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class BodySyncApp extends StatelessWidget {
+  const BodySyncApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final store = context.watch<AppStore>();
+    final themeMode = switch (store.settings.themeMode) {
+      'light' => ThemeMode.light,
+      'dark' => ThemeMode.dark,
+      _ => ThemeMode.system,
+    };
     return MaterialApp(
-      title: 'Flutter Custom Bottom Bar',
-      theme: ThemeData(
-        scaffoldBackgroundColor: AppTheme.backgroundColor,
-        elevatedButtonTheme:
-            ElevatedButtonThemeData(style: AppTheme.buttonStyle),
-      ),
-      home: MyHomePage(),
+      title: 'BodySync',
+      debugShowCheckedModeBanner: false,
+      theme: BSTheme.light(),
+      darkTheme: BSTheme.dark(),
+      themeMode: themeMode,
+      home: !store.loaded || !store.authKnown
+          ? const _Splash()
+          : store.uid == null
+              ? const SignInScreen()
+              : store.syncingInitial
+                  ? const _Splash()
+                  : store.recoveryNeeded
+                      ? const RecoveryScreen()
+                      : store.onboarded
+                          ? const HomeShell()
+                          : const OnboardingFlow(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _selectedIndex = 0;
-
-  static final List<Widget> _widgetOptions = <Widget>[
-    const WorkoutView(),
-    const CalIntakeView(),
-    WeightView(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+class _Splash extends StatelessWidget {
+  const _Splash();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: _widgetOptions[_selectedIndex],
-      ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(
-          bottom: 50,
-        ),
-        child: FractionallySizedBox(
-          widthFactor: 0.8,
-          child: Container(
-            height: 70,
-            decoration: BoxDecoration(
-              color: AppTheme.darkGreen1,
-              boxShadow: [
-                BoxShadow(
-                  color: AppTheme.darkGreen3.withValues(alpha: 0.5),
-                  offset: Offset(0, 2),
-                  blurRadius: 6,
-                ),
-              ],
-              borderRadius:
-                  BorderRadius.all(Radius.circular(AppTheme.borderRadius)),
-            ),
-            child: Row(
-              children: [
-                _buildNavItem(0, 'Workout', true),
-                _buildNavItem(1, 'Calorie Intake', false),
-                _buildNavItem(2, 'Weight', false, true),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildNavItem(int index, String label,
-      [bool isFirst = false, bool isLast = false]) {
-    return Expanded(
-      child: GestureDetector(
-        onTap: () => _onItemTapped(index),
-        child: Container(
-          decoration: BoxDecoration(
-            color: _selectedIndex == index
-                ? AppTheme.darkGreen2
-                : Colors.transparent,
-            borderRadius: _selectedIndex == index
-                ? BorderRadius.horizontal(
-                    left: isFirst
-                        ? Radius.circular(AppTheme.borderRadius)
-                        : Radius.zero,
-                    right: isLast
-                        ? Radius.circular(AppTheme.borderRadius)
-                        : Radius.zero,
-                  )
-                : null,
-          ),
-          alignment: Alignment.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                label,
-                style: TextStyle(
-                  color: AppTheme.whiteColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              if (_selectedIndex == index)
-                Padding(
-                  padding: const EdgeInsets.only(top: 2),
-                  child: Container(
-                    width: 60,
-                    height: 3,
-                    color: AppTheme.whiteColor.withValues(alpha: 0.8),
-                  ),
-                ),
-            ],
-          ),
-        ),
-      ),
-    );
+    return const Scaffold(body: SizedBox.expand());
   }
 }
