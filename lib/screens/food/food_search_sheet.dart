@@ -33,15 +33,47 @@ class _FoodSearchScreen extends StatefulWidget {
 
 class _FoodSearchScreenState extends State<_FoodSearchScreen> {
   final _controller = TextEditingController();
+  final _qtyCtrl = TextEditingController();
+  final _servingCtrl = TextEditingController();
   String _query = '';
   int? _selected;
   String? _portionLabel;
-  int _qty = 1;
+  double _qty = 1;
 
   @override
   void dispose() {
     _controller.dispose();
+    _qtyCtrl.dispose();
+    _servingCtrl.dispose();
     super.dispose();
+  }
+
+  static final _amountLabel = RegExp(r'^([\d.]+)\s*(g|ml)$');
+
+  /// Base amount for weight/volume portions ("100 g", "250 ml"), else null.
+  static double? servingBase(FoodPortion portion) {
+    final m = _amountLabel.firstMatch(portion.label);
+    return m == null ? null : double.tryParse(m.group(1)!);
+  }
+
+  static String? servingUnit(FoodPortion portion) =>
+      _amountLabel.firstMatch(portion.label)?.group(2);
+
+  void _resetPanel(Food food, String label) {
+    _qty = 1;
+    _qtyCtrl.text = '1';
+    final portion = food.portions.firstWhere(
+      (p) => p.label == label,
+      orElse: () => food.portions.first,
+    );
+    final base = servingBase(portion);
+    _servingCtrl.text = base == null ? '' : fmtG(base);
+  }
+
+  double? _servingAmount(FoodPortion portion) {
+    if (servingBase(portion) == null) return null;
+    final v = double.tryParse(_servingCtrl.text);
+    return (v == null || v <= 0) ? servingBase(portion) : v;
   }
 
   bool get _isToday => dateKey(widget.date) == dateKey(DateTime.now());
@@ -49,9 +81,16 @@ class _FoodSearchScreenState extends State<_FoodSearchScreen> {
   String get _contextLabel =>
       _isToday ? LogEntry.mealOf(DateTime.now()) : fmtDayMonth(widget.date);
 
-  void _add(AppStore store, Food food, FoodPortion portion, int qty) {
+  void _add(AppStore store, Food food, FoodPortion portion, double qty,
+      double? servingAmount) {
+    if (qty <= 0) return;
     final eff = store.foods.effective(food, portion);
     final own = store.foods.hasOverride(food, portion);
+    final base = servingBase(portion);
+    final factor = (base != null && servingAmount != null && base > 0)
+        ? servingAmount / base
+        : 1.0;
+    final mult = factor * qty;
     final now = DateTime.now();
     final entryTime = dateKey(widget.date) == dateKey(now)
         ? now
@@ -64,21 +103,26 @@ class _FoodSearchScreenState extends State<_FoodSearchScreen> {
         name: food.displayName(portion),
         foodId: food.id,
         portionLabel: portion.label,
-        portion: _portionText(food, portion, qty),
-        qty: qty.toDouble(),
-        kcal: eff.kcal * qty,
-        p: eff.p * qty,
-        c: eff.c * qty,
-        f: eff.f * qty,
+        portion: _portionText(food, portion, qty, servingAmount),
+        qty: qty,
+        kcal: eff.kcal * mult,
+        p: eff.p * mult,
+        c: eff.c * mult,
+        f: eff.f * mult,
         own: own,
       ),
     );
     if (!mounted) return;
     setState(() => _selected = null);
-    showBSToast(context, 'Added · ${fmtKcal(eff.kcal * qty)} kcal');
+    showBSToast(context, 'Added · ${fmtKcal(eff.kcal * mult)} kcal');
   }
 
-  String _portionText(Food food, FoodPortion portion, int qty) {
+  String _portionText(
+      Food food, FoodPortion portion, double qty, double? servingAmount) {
+    if (servingAmount != null) {
+      final unit = servingUnit(portion) ?? 'g';
+      return '${fmtG(servingAmount * qty)} $unit';
+    }
     final per = portion.per;
     final unit = per.startsWith('per ') ? per.substring(4) : portion.label;
     if (unit.contains(RegExp(r'^\d'))) {
@@ -86,7 +130,7 @@ class _FoodSearchScreenState extends State<_FoodSearchScreen> {
       final base = double.parse(m.group(1)!);
       return '${fmtG(base * qty)} ${m.group(2)}';
     }
-    return qty == 1 ? '1 $unit' : '$qty ${_plural(unit)}';
+    return qty == 1 ? '1 $unit' : '${fmtG(qty)} ${qty > 1 ? _plural(unit) : unit}';
   }
 
   String _plural(String unit) {
@@ -196,7 +240,7 @@ class _FoodSearchScreenState extends State<_FoodSearchScreen> {
                           } else {
                             _selected = i;
                             _portionLabel = r.portion.label;
-                            _qty = 1;
+                            _resetPanel(r.food, r.portion.label);
                           }
                         }),
                       );
@@ -208,10 +252,25 @@ class _FoodSearchScreenState extends State<_FoodSearchScreen> {
                             food: r.food,
                             initialLabel: _portionLabel ?? r.portion.label,
                             qty: _qty,
-                            onQty: (q) => setState(() => _qty = q),
-                            onPortion: (l) => setState(() => _portionLabel = l),
-                            onAdd: (portion, qty) =>
-                                _add(store, r.food, portion, qty),
+                            qtyCtrl: _qtyCtrl,
+                            servingCtrl: _servingCtrl,
+                            onQty: (q) => setState(() {
+                              _qty = q;
+                              _qtyCtrl.text = fmtG(q);
+                            }),
+                            onQtyText: (v) => setState(() {
+                              final parsed = double.tryParse(v);
+                              if (parsed != null && parsed > 0) {
+                                _qty = parsed.clamp(0.1, 99).toDouble();
+                              }
+                            }),
+                            onServing: () => setState(() {}),
+                            onPortion: (l) => setState(() {
+                              _portionLabel = l;
+                              _resetPanel(r.food, l);
+                            }),
+                            onAdd: (portion, qty) => _add(store, r.food,
+                                portion, qty, _servingAmount(portion)),
                             onNutrition: (portion) {
                               Navigator.of(context).push(MaterialPageRoute(
                                 fullscreenDialog: true,
@@ -409,7 +468,7 @@ class _FoodSearchScreenState extends State<_FoodSearchScreen> {
                   await store.addCustomFood(food);
                   if (!ctx.mounted) return;
                   Navigator.pop(ctx);
-                  _add(store, food, portion, 1);
+                  _add(store, food, portion, 1, null);
                 },
               ),
             ],
@@ -423,17 +482,25 @@ class _FoodSearchScreenState extends State<_FoodSearchScreen> {
 class _PortionPanel extends StatelessWidget {
   final Food food;
   final String initialLabel;
-  final int qty;
-  final ValueChanged<int> onQty;
+  final double qty;
+  final TextEditingController qtyCtrl;
+  final TextEditingController servingCtrl;
+  final ValueChanged<double> onQty;
+  final ValueChanged<String> onQtyText;
+  final VoidCallback onServing;
   final ValueChanged<String> onPortion;
-  final void Function(FoodPortion portion, int qty) onAdd;
+  final void Function(FoodPortion portion, double qty) onAdd;
   final void Function(FoodPortion portion) onNutrition;
 
   const _PortionPanel({
     required this.food,
     required this.initialLabel,
     required this.qty,
+    required this.qtyCtrl,
+    required this.servingCtrl,
     required this.onQty,
+    required this.onQtyText,
+    required this.onServing,
     required this.onPortion,
     required this.onAdd,
     required this.onNutrition,
@@ -449,6 +516,14 @@ class _PortionPanel extends StatelessWidget {
       orElse: () => food.portions.first,
     );
     final eff = store.foods.effective(food, portion);
+    final base = _FoodSearchScreenState.servingBase(portion);
+    final unit = _FoodSearchScreenState.servingUnit(portion);
+    final amount = base == null
+        ? null
+        : (double.tryParse(servingCtrl.text) ?? base);
+    final factor =
+        (base != null && amount != null && amount > 0) ? amount / base : 1.0;
+    final mult = factor * qty;
 
     return Container(
       margin: const EdgeInsets.only(bottom: 4),
@@ -471,10 +546,23 @@ class _PortionPanel extends StatelessWidget {
               ),
             ),
           ],
+          if (base != null)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 14),
+              child: BSField(
+                label: 'Serving',
+                controller: servingCtrl,
+                unit: unit,
+                hint: 'Database values are per ${fmtG(base)} $unit — '
+                    'enter what you actually had.',
+                onChanged: (_) => onServing(),
+              ),
+            ),
           Row(
             children: [
               const Expanded(child: BSOverline('Quantity')),
-              _Stepper(qty: qty, onQty: onQty),
+              _Stepper(qty: qty, controller: qtyCtrl,
+                  onQty: onQty, onText: onQtyText),
             ],
           ),
           Container(
@@ -490,7 +578,7 @@ class _PortionPanel extends StatelessWidget {
               textBaseline: TextBaseline.alphabetic,
               children: [
                 Text(
-                  fmtG(eff.kcal * qty),
+                  fmtG(eff.kcal * mult),
                   style: TextStyle(
                     fontFamily: BSType.font,
                     fontSize: BSType.heading,
@@ -511,7 +599,7 @@ class _PortionPanel extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  '${fmtG(eff.p * qty)}P · ${fmtG(eff.c * qty)}C · ${fmtG(eff.f * qty)}F',
+                  '${fmtG(eff.p * mult)}P · ${fmtG(eff.c * mult)}C · ${fmtG(eff.f * mult)}F',
                   style: TextStyle(
                     fontFamily: BSType.font,
                     fontSize: BSType.meta,
@@ -550,9 +638,36 @@ class _PortionPanel extends StatelessWidget {
 }
 
 class _Stepper extends StatelessWidget {
-  final int qty;
-  final ValueChanged<int> onQty;
-  const _Stepper({required this.qty, required this.onQty});
+  final double qty;
+  final TextEditingController controller;
+  final ValueChanged<double> onQty;
+  final ValueChanged<String> onText;
+  const _Stepper({
+    required this.qty,
+    required this.controller,
+    required this.onQty,
+    required this.onText,
+  });
+
+  // Below 1 the buttons step through the common food fractions
+  // (1 → ¾ → ½ → ¼) instead of jumping straight to zero.
+  static const _fractions = [0.25, 0.5, 0.75];
+
+  double _down() {
+    if (qty > 1) return qty - 1;
+    for (final f in _fractions.reversed) {
+      if (qty > f) return f;
+    }
+    return qty;
+  }
+
+  double _up() {
+    if (qty >= 1) return (qty + 1).clamp(1, 99).toDouble();
+    for (final f in _fractions) {
+      if (qty < f) return f;
+    }
+    return 1;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -560,12 +675,16 @@ class _Stepper extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _btn(c, 'minus', () => onQty((qty - 1).clamp(1, 99))),
+        _btn(c, 'minus', () => onQty(_down())),
         Container(
-          constraints: const BoxConstraints(minWidth: 30),
+          constraints: const BoxConstraints(minWidth: 30, maxWidth: 64),
           alignment: Alignment.center,
-          child: Text(
-            '$qty',
+          child: TextField(
+            controller: controller,
+            onChanged: onText,
+            textAlign: TextAlign.center,
+            keyboardType:
+                const TextInputType.numberWithOptions(decimal: true),
             style: TextStyle(
               fontFamily: BSType.font,
               fontSize: BSType.heading,
@@ -573,9 +692,14 @@ class _Stepper extends StatelessWidget {
               color: c.ink,
               fontFeatures: const [FontFeature.tabularFigures()],
             ),
+            decoration: const InputDecoration(
+              isDense: true,
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.symmetric(horizontal: 4),
+            ),
           ),
         ),
-        _btn(c, 'plus', () => onQty((qty + 1).clamp(1, 99))),
+        _btn(c, 'plus', () => onQty(_up())),
       ],
     );
   }

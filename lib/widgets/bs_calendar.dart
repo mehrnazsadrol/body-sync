@@ -110,7 +110,7 @@ class _DayCell extends StatelessWidget {
           height: BSSpace.hit,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: on ? c.carbSoft : Colors.transparent,
+            color: on ? c.proSoft : Colors.transparent,
             shape: BoxShape.circle,
             border: today ? Border.all(color: c.ink3, width: 1) : null,
           ),
@@ -126,7 +126,7 @@ class _DayCell extends StatelessWidget {
                 color: mute
                     ? c.ink3
                     : on
-                        ? c.carbInk
+                        ? c.proInk
                         : c.ink,
                 fontFeatures: const [FontFeature.tabularFigures()],
               ),

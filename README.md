@@ -1,48 +1,64 @@
 # BodySync
 
-A Flutter application for managing weight.
+BodySync is a Flutter app for tracking weight, calories, and workouts. You log your food, weigh-ins, and workout days as you go through the day, and the app turns that into trends and progress charts — with your data synced to the cloud so it follows you across devices.
 
-This weight management app was built from the ground up to help users log their daily calories, workouts, and weight.
+## Features
 
-## 🎯 Key Features:
-- Custom Calendar to track workout days
-- Scrollable Line Charts that visualize weight trends and calorie intake, with zoom functionality to view larger time spans
-- User-Friendly Input Boxes to log daily weight and calories as users progress through their day
+- **Today dashboard** — a single view of the current day: calories, macros, weight, and workout status.
+- **Food logging** — search a bundled food database, save your own custom foods, quick-add calories, and reuse recent entries. Charts visualize calorie and macro (protein / carb / fat) intake over time.
+- **Body tracking** — weigh-in and body-measurement check-ins, with history and trend charts.
+- **Workout calendar** — mark workout days on a monthly calendar at a glance.
+- **Cloud sync** — sign in with Firebase Auth; entries are stored locally first and synced to Cloud Firestore, so the app works offline and across devices.
+- **Reminders** — local notifications to keep daily logging on track.
+- **Data export / import** — back up your data to a file and restore it later.
+- **Light and dark themes**, localized strings, and an onboarding flow for first-time setup.
 
-## Getting Started
+## Getting started
 
 ### Prerequisites
 
-Before you begin, ensure you have met the following requirements:
+- [Flutter](https://docs.flutter.dev/get-started/install) (Dart SDK ≥ 3.4) — verify with `flutter doctor`.
+- For iOS: a Mac with [Xcode](https://developer.apple.com/xcode/) and CocoaPods installed, and the command line tools selected:
+  ```bash
+  sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
+  ```
+- For Android: Android Studio with an emulator or a connected device.
 
-- You have installed [Flutter](https://flutter.dev/docs/get-started/install) on your machine.
-- You have installed [Xcode](https://developer.apple.com/xcode/) on your Mac.
-- You have set up the Xcode command line tools by running `sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer`.
+### Install
 
-### Cloning the Repository and Running the App
-
-To clone the repository, run the following command in your terminal:
+Clone the repository and fetch dependencies:
 
 ```bash
 git clone https://github.com/mehrnazsadrol/body-sync.git
 cd body-sync
+flutter pub get
 ```
 
-### Running the App
-
-To run the app, go to the project repository in terminal:
-
-```bash 
-open -a simulator # if you want to run the app in Xcode simulator
-# or connect your iPhone with a cable to your laptop and run
-```
-
-To run the app on a specific simulator:
-
-```bash 
-flutter emulators --launch apple_ios_simulator
-```
-and run the app
+For iOS, also install the native pods:
 
 ```bash
-flutter run
+cd ios && pod install && cd ..
+```
+
+### Firebase setup
+
+The app initializes Firebase (Auth + Cloud Firestore) at startup. This repository includes a working `lib/firebase_options.dart` and platform config files, so it runs as-is. If you fork the project and want your own backend, point it at your own Firebase project:
+
+1. Create a project in the [Firebase console](https://console.firebase.google.com/) and enable **Authentication** and **Cloud Firestore**.
+2. Install the [FlutterFire CLI](https://firebase.google.com/docs/flutter/setup) and run:
+   ```bash
+   flutterfire configure
+   ```
+   This regenerates `firebase_options.dart` and the platform config files for your project.
+
+### Run
+
+List available devices, then run on the one you want:
+
+```bash
+flutter devices
+flutter run            # runs on the default/connected device
+flutter run -d <id>    # runs on a specific device from the list
+```
+
+To use the iOS Simulator, start it first with `open -a Simulator`, then run `flutter run`. To run on a physical iPhone, connect it by cable and select it with `flutter run -d <id>`.
